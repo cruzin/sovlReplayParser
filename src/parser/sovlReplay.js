@@ -328,7 +328,7 @@ function analyzeCombatStep(step, attacker, defender, eventIndex, side) {
 
 function analyzeCombatRoll(roll, unit, label, eventIndex, side, phase) {
   const baseProbability = probabilityForD6Target(roll?.target);
-  const rolls = values(roll?.rolls).map((item) => normalizeRoll(item, baseProbability));
+  const rolls = values(roll?.rolls).map((item) => normalizeRoll(item, baseProbability, roll?.target));
   const expectedPerRoll = rolls.length ? sum(rolls.map((item) => item.expectedSuccess)) / rolls.length : baseProbability;
   const successes = rolls.filter((item) => item.success).length;
   const expectedSuccesses = sum(rolls.map((item) => item.expectedSuccess));
@@ -438,7 +438,7 @@ function analyzeDiscipline(event, eventIndex, unitById) {
 
 function analyzeRollArray({ id, label, playerId, playerName, unitName, phase, target, rolls }) {
   const baseProbability = probabilityForD6Target(target);
-  const normalized = rolls.map((roll) => normalizeRoll(roll, baseProbability));
+  const normalized = rolls.map((roll) => normalizeRoll(roll, baseProbability, target));
   const expectedPerRoll = normalized.length
     ? sum(normalized.map((item) => item.expectedSuccess)) / normalized.length
     : baseProbability;
@@ -462,9 +462,9 @@ function analyzeRollArray({ id, label, playerId, playerName, unitName, phase, ta
   };
 }
 
-function normalizeRoll(roll, baseSuccessProbability = 0.5) {
+function normalizeRoll(roll, baseSuccessProbability = 0.5, target = null) {
   const rerollTypes = values(roll?.rerollTypes).map((value) => Number(value));
-  const adjustedSuccessProbability = adjustedProbabilityForRerolls(baseSuccessProbability, rerollTypes);
+  const adjustedSuccessProbability = adjustedProbabilityForRerolls(baseSuccessProbability, rerollTypes, target);
   return {
     result: Number(roll?.result || 0),
     success: Boolean(roll?.success || roll?.autoSuccess),
@@ -481,16 +481,24 @@ function normalizeRoll(roll, baseSuccessProbability = 0.5) {
   };
 }
 
-function adjustedProbabilityForRerolls(baseProbability, rerollTypes) {
+function adjustedProbabilityForRerolls(baseProbability, rerollTypes, target = null) {
   const p = clamp(baseProbability, 0, 1);
-  if (rerollTypes.includes(4)) return p * p;
+  const numericTarget = Number(target);
+  const naturalOneCanSucceed = Number.isFinite(numericTarget) && numericTarget <= 1;
+  const naturalSixCanSucceed = !Number.isFinite(numericTarget) || numericTarget <= 6;
+
+  if (rerollTypes.includes(2)) return p * p;
+  if (rerollTypes.includes(4) && naturalSixCanSucceed) return clamp(p - 1 / 6 + p / 6, 0, 1);
   if (rerollTypes.includes(1)) return 1 - (1 - p) ** 2;
+  if (rerollTypes.includes(3) && !naturalOneCanSucceed) return clamp(p + p / 6, 0, 1);
   return p;
 }
 
 function labelRerollType(type) {
   if (type === 1) return "reroll failed dice";
-  if (type === 4) return "reroll successful dice";
+  if (type === 2) return "reroll successful dice";
+  if (type === 3) return "reroll failed natural 1s";
+  if (type === 4) return "reroll successful natural 6s";
   return `reroll type ${type}`;
 }
 
