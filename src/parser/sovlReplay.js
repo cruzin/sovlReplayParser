@@ -97,6 +97,138 @@ export function analyzeReplay(text, title = "Uploaded replay") {
   };
 }
 
+export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis") {
+  const analyses = replayInputs.map((input) => analyzeReplay(input.text, input.name));
+  const playersByName = new Map();
+
+  for (const analysis of analyses) {
+    for (const player of analysis.players) {
+      const key = normalizePlayerKey(player.name);
+      const current = playersByName.get(key) || makeAggregatePlayer(player.name);
+      current.games += 1;
+      current.rolls += player.rolls;
+      current.successes += player.successes;
+      current.expectedSuccesses += player.expectedSuccesses;
+      current.successVariance += player.successStdDev ** 2;
+      current.rollTotal += player.rollTotal;
+      current.expectedRollTotal += player.expectedRollTotal;
+      current.rollVariance += player.rollStdDev ** 2;
+      current.faceCounts = current.faceCounts.map((count, index) => count + player.faceCounts[index]);
+      playersByName.set(key, current);
+    }
+  }
+
+  const players = [...playersByName.values()].map(finalizeAggregatePlayer).sort((a, b) => b.rolls - a.rolls);
+  const favor = compareAggregatePlayerLuck(players);
+  const totals = {
+    games: analyses.length,
+    events: sum(analyses.map((analysis) => analysis.events.length)),
+    units: sum(analyses.map((analysis) => analysis.units.length)),
+    combats: sum(analyses.map((analysis) => analysis.combats.length)),
+    rangedAttacks: sum(analyses.map((analysis) => analysis.rangedAttacks.length)),
+    totalDice: sum(analyses.map((analysis) => analysis.totalDice)),
+    activeEffects: sum(analyses.map((analysis) => analysis.activeEffects.length)),
+    flaggedFights: sum(analyses.map((analysis) => analysis.unlikelyWins.totalFlagged)),
+  };
+  const rerolls = {
+    available: sum(analyses.map((analysis) => analysis.rerolls.available)),
+    applied: sum(analyses.map((analysis) => analysis.rerolls.applied)),
+    byType: mergeRerollTypes(analyses.flatMap((analysis) => analysis.rerolls.byType)),
+  };
+  const games = analyses.map((analysis) => ({
+    title: analysis.title,
+    players: analysis.players,
+    favor: analysis.favor,
+    totalDice: analysis.totalDice,
+    combats: analysis.combats.length,
+    flaggedFights: analysis.unlikelyWins.totalFlagged,
+    events: analysis.events.length,
+  }));
+
+  return {
+    title,
+    mode: "batch",
+    analyses,
+    players,
+    favor,
+    totals,
+    rerolls,
+    games,
+  };
+}
+
+function makeAggregatePlayer(name) {
+  return {
+    name,
+    games: 0,
+    rolls: 0,
+    successes: 0,
+    expectedSuccesses: 0,
+    successVariance: 0,
+    rollTotal: 0,
+    expectedRollTotal: 0,
+    rollVariance: 0,
+    faceCounts: [0, 0, 0, 0, 0, 0],
+  };
+}
+
+function finalizeAggregatePlayer(player) {
+  const successStdDev = Math.sqrt(player.successVariance);
+  const successDelta = player.successes - player.expectedSuccesses;
+  const successZ = successStdDev ? successDelta / successStdDev : 0;
+  const rollStdDev = Math.sqrt(player.rollVariance);
+  const rollDelta = player.rollTotal - player.expectedRollTotal;
+  const rollZ = rollStdDev ? rollDelta / rollStdDev : 0;
+  const faceChiSquare = chiSquareUniformD6(player.faceCounts);
+  return {
+    ...player,
+    successStdDev,
+    successDelta,
+    successZ,
+    successPValue: twoTailedNormalP(successZ),
+    rollStdDev,
+    rollDelta,
+    rollZ,
+    rollPValue: twoTailedNormalP(rollZ),
+    averageRoll: player.rolls ? player.rollTotal / player.rolls : 0,
+    faceChiSquare,
+    facePValue: chiSquareDf5UpperTail(faceChiSquare),
+    luckLevel: classifyLuck(twoTailedNormalP(successZ), successZ),
+  };
+}
+
+function compareAggregatePlayerLuck(players) {
+  if (players.length < 2) return null;
+  const [a, b] = [...players].sort((left, right) => Math.abs(right.successDelta) - Math.abs(left.successDelta));
+  const diff = a.successDelta - b.successDelta;
+  const stdDev = Math.sqrt(a.successStdDev ** 2 + b.successStdDev ** 2);
+  const z = stdDev ? diff / stdDev : 0;
+  const pValue = twoTailedNormalP(z);
+  const favored = diff >= 0 ? a : b;
+  return {
+    favoredPlayerName: favored.name,
+    successDeltaDifference: Math.abs(diff),
+    z,
+    pValue,
+    level: classifyLuck(pValue, z),
+  };
+}
+
+function mergeRerollTypes(items) {
+  const byType = new Map();
+  for (const item of items) {
+    const current = byType.get(item.type) || { ...item, available: 0, applied: 0 };
+    current.available += item.available;
+    current.applied += item.applied;
+    byType.set(item.type, current);
+  }
+  return [...byType.values()];
+}
+
+function normalizePlayerKey(name) {
+  return String(name || "Unknown player").trim().toLowerCase();
+}
+
 function makePlayer(id, name) {
   return {
     id,

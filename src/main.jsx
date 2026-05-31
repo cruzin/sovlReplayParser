@@ -6,13 +6,14 @@ import {
   ChevronsUpDown,
   Crosshair,
   Dice5,
+  Files,
   FileUp,
   Swords,
   Trophy,
   Users,
   WandSparkles,
 } from "lucide-react";
-import { analyzeReplay } from "./parser/sovlReplay.js";
+import { analyzeReplay, analyzeReplayBatch } from "./parser/sovlReplay.js";
 import "./styles.css";
 
 const sampleManifestUrl = `${import.meta.env.BASE_URL}samples/manifest.json`;
@@ -23,6 +24,7 @@ function App() {
   const [analysis, setAnalysis] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const isBatch = analysis?.mode === "batch";
 
   useEffect(() => {
     fetch(sampleManifestUrl)
@@ -67,16 +69,44 @@ function App() {
     }
   }
 
+  async function onBulkUpload(event) {
+    const files = [...(event.target.files ?? [])];
+    if (!files.length) return;
+    setLoading(true);
+    setError("");
+    setSelectedSample("");
+    try {
+      const replayInputs = await Promise.all(
+        files.map(async (file) => ({
+          name: file.name,
+          text: await file.text(),
+        })),
+      );
+      setAnalysis(analyzeReplayBatch(replayInputs, `${files.length} replay bulk analysis`));
+    } catch (err) {
+      setError(`Could not parse bulk replay upload: ${err.message}`);
+    } finally {
+      setLoading(false);
+      event.target.value = "";
+    }
+  }
+
   return (
     <main className="app-shell">
       <section className="topbar">
         <div>
           <p className="eyebrow">SOVL Replay Analyzer</p>
           <h1>{analysis?.title ?? "Load a replay"}</h1>
-          {analysis && (
+          {analysis && !isBatch && (
             <p className="subtitle">
               {analysis.players[0]?.name ?? "Player 0"} vs {analysis.players[1]?.name ?? "Player 1"} -{" "}
               {analysis.events.length} events parsed
+            </p>
+          )}
+          {isBatch && (
+            <p className="subtitle">
+              {analysis.totals.games} games - {analysis.players.length} players - {analysis.totals.totalDice} dice
+              aggregated
             </p>
           )}
         </div>
@@ -102,13 +132,20 @@ function App() {
             <span>Upload</span>
             <input type="file" accept=".SOVL,.sovl,.json,application/json" onChange={onUpload} />
           </label>
+          <label className="upload-button" title="Upload several SOVL replays">
+            <Files size={17} />
+            <span>Bulk</span>
+            <input type="file" accept=".SOVL,.sovl,.json,application/json" multiple onChange={onBulkUpload} />
+          </label>
         </div>
       </section>
 
       {error && <div className="error">{error}</div>}
-      {loading && <div className="loading">Parsing replay...</div>}
+      {loading && <div className="loading">Parsing replay data...</div>}
 
-      {analysis && !loading && (
+      {analysis && !loading && isBatch && <BulkAnalysis analysis={analysis} />}
+
+      {analysis && !loading && !isBatch && (
         <>
           <section className="metric-grid">
             <Metric icon={<Users />} label="Units" value={analysis.units.length} />
@@ -187,6 +224,112 @@ function PanelHeading({ icon, title }) {
   );
 }
 
+function BulkAnalysis({ analysis }) {
+  return (
+    <>
+      <section className="metric-grid">
+        <Metric icon={<Files />} label="Games" value={analysis.totals.games} />
+        <Metric icon={<Users />} label="Players" value={analysis.players.length} />
+        <Metric icon={<Swords />} label="Combats" value={analysis.totals.combats} />
+        <Metric icon={<Crosshair />} label="Ranged attacks" value={analysis.totals.rangedAttacks} />
+        <Metric icon={<Dice5 />} label="Tracked dice" value={analysis.totals.totalDice} />
+        <Metric icon={<Trophy />} label="Unlikely fights" value={analysis.totals.flaggedFights} />
+      </section>
+
+      <section className="two-column">
+        <Panel title="Aggregate Player Luck" icon={<BarChart3 />}>
+          <PlayerLuck players={analysis.players} favor={analysis.favor} />
+        </Panel>
+        <Panel title="Bulk Rerolls" icon={<WandSparkles />}>
+          <BulkRerolls rerolls={analysis.rerolls} totals={analysis.totals} />
+        </Panel>
+      </section>
+
+      <section className="panel">
+        <PanelHeading icon={<Files />} title="Games In Batch" />
+        <BulkGameTable games={analysis.games} />
+      </section>
+    </>
+  );
+}
+
+function BulkRerolls({ rerolls, totals }) {
+  return (
+    <div className="effect-stack">
+      <div className="reroll-summary">
+        <div>
+          <span>Reroll-enabled dice</span>
+          <strong>{rerolls.available}</strong>
+        </div>
+        <div>
+          <span>Actually rerolled</span>
+          <strong>{rerolls.applied}</strong>
+        </div>
+      </div>
+      <div className="reroll-types">
+        {rerolls.byType.length ? (
+          rerolls.byType.map((item) => (
+            <span className="chip" key={item.type}>
+              {item.label}: {item.applied}/{item.available}
+            </span>
+          ))
+        ) : (
+          <p className="empty">No reroll metadata found across the uploaded games.</p>
+        )}
+      </div>
+      <div className="bulk-note">
+        <strong>{totals.activeEffects}</strong>
+        <span> active effects and buffs parsed across the full batch.</span>
+      </div>
+    </div>
+  );
+}
+
+function BulkGameTable({ games }) {
+  return (
+    <div className="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Replay</th>
+            <th>Players</th>
+            <th>Favored</th>
+            <th>Dice</th>
+            <th>Combats</th>
+            <th>Flags</th>
+          </tr>
+        </thead>
+        <tbody>
+          {games.map((game) => (
+            <tr key={game.title}>
+              <td>
+                <strong>{game.title}</strong>
+                <span>{game.events} events</span>
+              </td>
+              <td>{game.players.map((player) => player.name).join(" vs ")}</td>
+              <td>
+                {game.favor ? (
+                  <>
+                    <strong>{game.favor.favoredPlayerName}</strong>
+                    <span>
+                      z {formatNumber(game.favor.z, 2)} - p {formatPValue(game.favor.pValue)}
+                    </span>
+                  </>
+                ) : (
+                  "n/a"
+                )}
+              </td>
+              <td>{game.totalDice}</td>
+              <td>{game.combats}</td>
+              <td>{game.flaggedFights}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function PlayerLuck({ players, favor }) {
   return (
     <>
@@ -206,10 +349,13 @@ function PlayerLuck({ players, favor }) {
       </p>
       <div className="player-grid">
         {players.map((player) => (
-          <div className="player-card" key={player.id}>
+          <div className="player-card" key={player.id ?? player.name}>
             <div>
               <h3>{player.name}</h3>
-              <p>{player.rolls} dice - avg {formatNumber(player.averageRoll, 2)}</p>
+              <p>
+                {player.games ? `${player.games} games - ` : ""}
+                {player.rolls} dice - avg {formatNumber(player.averageRoll, 2)}
+              </p>
             </div>
             <div className="luck-line">
               <InfoLabel text="Successes" tip="Actual successful rolls compared with expected successful rolls after replay-marked reroll modifiers." />
