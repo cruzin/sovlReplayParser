@@ -641,10 +641,12 @@ function DisciplineTable({ tests }) {
           {tests.map((test) => (
             <tr key={test.id}>
               <td>{test.unit.name}</td>
-              <td>{test.rollTotal}</td>
-              <td>{test.target}</td>
-              <td>{formatPercent(test.probability)}</td>
-              <td className={test.success ? "positive" : "negative"}>{test.success ? "Pass" : "Fail"}</td>
+              <td>{test.crumble ? `D3: ${test.rollTotal}` : test.rollTotal}</td>
+              <td>{test.crumble ? "Crumble" : test.target}</td>
+              <td>{test.crumble ? "n/a" : formatPercent(test.probability)}</td>
+              <td className={test.crumble || test.success ? "positive" : "negative"}>
+                {test.crumble ? `Lose ${test.rollTotal}` : test.success ? "Pass" : "Fail"}
+              </td>
             </tr>
           ))}
         </tbody>

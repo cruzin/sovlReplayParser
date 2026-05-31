@@ -387,11 +387,19 @@ function analyzeRangedAttack(event, eventIndex, type, unitById) {
 function analyzeDiscipline(event, eventIndex, unitById) {
   const unit = unitById.get(event.unitID) || unknownUnit(event.unitID);
   const test = event.test || {};
-  const target = Number(test.unitDiscipline || 0) + Number(test.rankBonusModifier || 0) - Number(test.penalty || 0);
-  const probability = probability2d6AtMost(target);
   const rawRolls = values(test.rolls);
-  const perDieProbability = rawRolls.length ? probability / rawRolls.length : 0;
-  const rolls = rawRolls.map((roll) => normalizeRoll(roll, perDieProbability));
+  const crumble = Boolean(test.crumble || rawRolls.some((roll) => roll?.isD3));
+  const target = crumble ? null : clamp(Number(test.unitDiscipline || 0) - Number(test.penalty || 0), 0, Number(test.unitDiscipline || 0));
+  const probability = crumble ? null : probability2d6AtMost(target);
+  const rolls = crumble
+    ? []
+    : rawRolls.map((roll, index) => ({
+        ...normalizeRoll(roll, index === 0 ? probability : 0),
+        success: index === 0 ? Boolean(test.success || test.autoSuccess) : false,
+        expectedSuccess: index === 0 ? probability : 0,
+        successVariance: index === 0 ? probability * (1 - probability) : 0,
+      }));
+  const displayRolls = rawRolls.map((roll) => normalizeRoll(roll, 0));
   const rollTotal = sum(rolls.map((roll) => roll.result));
   const success = Boolean(test.success || test.autoSuccess);
   const expectedPerRoll = probability;
@@ -402,23 +410,28 @@ function analyzeDiscipline(event, eventIndex, unitById) {
     playerId: unit.playerId,
     playerName: unit.playerName,
     unitName: unit.name,
-    phase: "discipline",
+    phase: crumble ? "crumble" : "discipline",
     target,
-    targetLabel: `2D6 <= ${target}`,
+    targetLabel: crumble ? "D3 crumble" : `2D6 <= ${target}`,
     rolls,
     successes: success ? 1 : 0,
-    expectedSuccesses,
-    expectedPerRoll: rolls.length ? probability / rolls.length : 0,
-    successDelta: (success ? 1 : 0) - expectedSuccesses,
+    expectedSuccesses: crumble ? 0 : expectedSuccesses,
+    expectedPerRoll: crumble ? 0 : expectedPerRoll,
+    successDelta: crumble ? 0 : (success ? 1 : 0) - expectedSuccesses,
     rerolls: summarizeRollRerolls(rolls),
   };
   return {
     id: `discipline-${eventIndex}`,
     unit,
-    rollTotal,
+    rollTotal: crumble ? sum(displayRolls.map((roll) => roll.result)) : rollTotal,
+    displayRolls,
     target,
     probability,
     success,
+    crumble,
+    unitDiscipline: Number(test.unitDiscipline || 0),
+    penalty: Number(test.penalty || 0),
+    rankBonusModifier: Number(test.rankBonusModifier || 0),
     rollGroup,
   };
 }

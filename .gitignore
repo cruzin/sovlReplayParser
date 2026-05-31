@@ -3,3 +3,4 @@ dist/
 .vite/
 *.local
 vite-dev*.log
+vite-live*.log
