@@ -211,21 +211,88 @@ h1 {
   margin-bottom: 10px;
 }
 
+.segment-banner {
+  border: 1px solid #c9d2d6;
+  border-radius: 8px;
+  background: #f2f7f7;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
 .significance-banner span,
+.segment-banner span,
 .method-note {
   color: #68727a;
   font-size: 0.86rem;
 }
 
-.significance-banner strong {
+.significance-banner strong,
+.segment-banner strong {
   display: block;
   margin-top: 2px;
   font-size: 1.15rem;
 }
 
+.segment-banner small {
+  color: #68727a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 .significance-banner p,
+.segment-banner p,
 .method-note {
   margin: 6px 0 0;
+}
+
+.expectation-list {
+  display: grid;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.expectation-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(103, 92, 66, 0.18);
+  padding-top: 5px;
+}
+
+.expectation-list strong {
+  margin: 0;
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.expectation-result {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.mini-badge {
+  border: 1px solid #d8cdbc;
+  border-radius: 999px;
+  background: #fffaf2;
+  color: #66717b;
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.mini-badge.hot {
+  border-color: #8fc1b4;
+  background: #e7f4ef;
+  color: #28715f;
+}
+
+.mini-badge.cold {
+  border-color: #d69b93;
+  background: #fae9e6;
+  color: #a8493f;
 }
 
 .method-note {
@@ -469,6 +536,97 @@ h1 {
   padding-bottom: 8px;
 }
 
+.score-card span,
+.fate-row span,
+.swing-row span,
+.impact-row span {
+  color: #66717b;
+}
+
+.fate-row p,
+.impact-row p,
+.method-note {
+  margin: 6px 0 0;
+  color: #66717b;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.score-card {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #e2d8c9;
+  border-radius: 8px;
+  background: #fffdf8;
+  padding: 10px;
+}
+
+.score-card small,
+.swing-row small {
+  color: #697680;
+  line-height: 1.35;
+}
+
+.fate-list,
+.swing-list,
+.impact-list {
+  display: grid;
+  gap: 8px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.fate-row,
+.swing-row,
+.impact-row {
+  display: grid;
+  gap: 8px;
+  border-bottom: 1px solid #ebe4da;
+  padding: 9px 0;
+}
+
+.fate-row > div:first-child,
+.swing-row > div:first-child,
+.impact-row > div:first-child {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fate-stats,
+.impact-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.fate-stats span,
+.impact-stats span {
+  border: 1px solid #e4dbce;
+  border-radius: 999px;
+  background: #fffaf2;
+  color: #52616b;
+  padding: 3px 8px;
+  font-size: 0.78rem;
+}
+
+.swing-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.impact-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .unlikely-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -630,6 +788,10 @@ td span {
   }
 
   .flagged-fights {
+    grid-template-columns: 1fr;
+  }
+
+  .score-grid {
     grid-template-columns: 1fr;
   }
 }
