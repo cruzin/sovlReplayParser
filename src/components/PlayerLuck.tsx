@@ -31,7 +31,7 @@ export function PlayerLuck({ players, favor, firstHalf = null, latterHalf = null
       {latterHalf && <SegmentLuck segment={latterHalf} />}
       <p className="method-note">
         Expected successes now include replay-marked reroll modifiers. These fields flag outliers; they are evidence
-        for review, not proof of cheating on their own.
+        for review, not proof of cheating on their own. D3 rolls are excluded from D6 luck statistics.
       </p>
       <div className="player-grid">
         {players.map((player) => (

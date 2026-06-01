@@ -1,11 +1,21 @@
 :root {
   color-scheme: light;
+  --page-bg: #f4f1ea;
+  --page-wash: rgba(43, 64, 75, 0.1);
+  --text: #1f2933;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f4f1ea;
-  color: #1f2933;
+  background: var(--page-bg);
+  color: var(--text);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #101419;
+  --page-wash: rgba(72, 130, 148, 0.16);
+  --text: #e8edf0;
 }
 
 * {
@@ -16,8 +26,8 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    linear-gradient(180deg, rgba(43, 64, 75, 0.1), transparent 300px),
-    #f4f1ea;
+    linear-gradient(180deg, var(--page-wash), transparent 300px),
+    var(--page-bg);
 }
 
 button,
@@ -75,7 +85,8 @@ h1 {
 }
 
 .select-wrap,
-.upload-button {
+.upload-button,
+.theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -99,6 +110,17 @@ h1 {
 .upload-button {
   cursor: pointer;
   font-weight: 750;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.theme-toggle:hover,
+.select-wrap:hover,
+.upload-button:hover {
+  border-color: #517f8e;
 }
 
 .upload-button input {
@@ -568,7 +590,8 @@ h1 {
 }
 
 .score-card small,
-.swing-row small {
+.swing-row small,
+.impact-row small {
   color: #697680;
   line-height: 1.35;
 }
@@ -834,4 +857,185 @@ td span {
   .metric-grid {
     grid-template-columns: 1fr;
   }
+}
+
+:root[data-theme="dark"] .eyebrow {
+  color: #a7c486;
+}
+
+:root[data-theme="dark"] .subtitle,
+:root[data-theme="dark"] .metric-label,
+:root[data-theme="dark"] .significance-banner span,
+:root[data-theme="dark"] .segment-banner span,
+:root[data-theme="dark"] .segment-banner small,
+:root[data-theme="dark"] .method-note,
+:root[data-theme="dark"] .player-card p,
+:root[data-theme="dark"] .unit-row span,
+:root[data-theme="dark"] .roll-row span,
+:root[data-theme="dark"] .info-label,
+:root[data-theme="dark"] .reroll-summary span,
+:root[data-theme="dark"] .effect-row span,
+:root[data-theme="dark"] .bulk-note span,
+:root[data-theme="dark"] .score-card span,
+:root[data-theme="dark"] .fate-row span,
+:root[data-theme="dark"] .swing-row span,
+:root[data-theme="dark"] .impact-row span,
+:root[data-theme="dark"] .fate-row p,
+:root[data-theme="dark"] .impact-row p,
+:root[data-theme="dark"] .score-card small,
+:root[data-theme="dark"] .swing-row small,
+:root[data-theme="dark"] .impact-row small,
+:root[data-theme="dark"] .unlikely-summary span,
+:root[data-theme="dark"] .unlikely-summary p,
+:root[data-theme="dark"] th,
+:root[data-theme="dark"] td span,
+:root[data-theme="dark"] .empty {
+  color: #a8b4ba;
+}
+
+:root[data-theme="dark"] .select-wrap,
+:root[data-theme="dark"] .upload-button,
+:root[data-theme="dark"] .theme-toggle {
+  border-color: #4b5962;
+  background: #202830;
+  color: #e8edf0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+:root[data-theme="dark"] .select-wrap:hover,
+:root[data-theme="dark"] .upload-button:hover,
+:root[data-theme="dark"] .theme-toggle:hover {
+  border-color: #81b9c8;
+}
+
+:root[data-theme="dark"] .metric,
+:root[data-theme="dark"] .panel {
+  border-color: #39454e;
+  background: rgba(25, 31, 37, 0.94);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .metric-icon,
+:root[data-theme="dark"] .panel-heading svg,
+:root[data-theme="dark"] .info-dot {
+  color: #81b9c8;
+}
+
+:root[data-theme="dark"] .error {
+  border-color: #8d4942;
+  background: #3d211f;
+  color: #f08b7e;
+}
+
+:root[data-theme="dark"] .loading {
+  border-color: #385d6b;
+  background: #172b36;
+  color: #a9d7e5;
+}
+
+:root[data-theme="dark"] .significance-banner {
+  border-color: #766438;
+  background: #302b1c;
+}
+
+:root[data-theme="dark"] .segment-banner {
+  border-color: #385d6b;
+  background: #182b2f;
+}
+
+:root[data-theme="dark"] .player-card,
+:root[data-theme="dark"] .reroll-summary div,
+:root[data-theme="dark"] .bulk-note,
+:root[data-theme="dark"] .unlikely-summary > div:not(.flagged-fights),
+:root[data-theme="dark"] .mini-badge,
+:root[data-theme="dark"] .fate-stats span,
+:root[data-theme="dark"] .impact-stats span {
+  border-color: #39454e;
+  background: #202830;
+  color: #a8b4ba;
+}
+
+:root[data-theme="dark"] .score-card,
+:root[data-theme="dark"] .flagged-fight {
+  border-color: #39454e;
+  background: #151b21;
+}
+
+:root[data-theme="dark"] .face {
+  border-color: #39454e;
+  background: #182027;
+}
+
+:root[data-theme="dark"] .face span {
+  color: #a8b4ba;
+}
+
+:root[data-theme="dark"] .expectation-list div,
+:root[data-theme="dark"] .effect-row,
+:root[data-theme="dark"] .fate-row,
+:root[data-theme="dark"] .swing-row,
+:root[data-theme="dark"] .impact-row,
+:root[data-theme="dark"] .unit-row,
+:root[data-theme="dark"] .roll-row,
+:root[data-theme="dark"] td {
+  border-bottom-color: #303a42;
+}
+
+:root[data-theme="dark"] .info-dot {
+  border-color: #4b5962;
+}
+
+:root[data-theme="dark"] .tooltip {
+  border-color: #4b5962;
+  background: #eef3f5;
+  color: #13191f;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme="dark"] .badge,
+:root[data-theme="dark"] .chip,
+:root[data-theme="dark"] .mini-badge.hot {
+  border-color: #357f6d;
+  background: #16342d;
+  color: #76d2b8;
+}
+
+:root[data-theme="dark"] .badge.warning {
+  border-color: #85613a;
+  background: #3a2a18;
+  color: #f1bf77;
+}
+
+:root[data-theme="dark"] .mini-badge.cold {
+  border-color: #8d4942;
+  background: #3d211f;
+  color: #f08b7e;
+}
+
+:root[data-theme="dark"] .bar-track {
+  background: #30363d;
+}
+
+:root[data-theme="dark"] .bar-positive {
+  background: #76d2b8;
+}
+
+:root[data-theme="dark"] .bar-negative {
+  background: #f08b7e;
+}
+
+:root[data-theme="dark"] .positive {
+  color: #76d2b8;
+}
+
+:root[data-theme="dark"] .negative {
+  color: #f08b7e;
+}
+
+:root[data-theme="dark"] .side-0 {
+  background: #62c4aa;
+}
+
+:root[data-theme="dark"] .side-1 {
+  background: #cb8bc4;
 }

@@ -1,4 +1,5 @@
 import { classifyLuck, twoTailedNormalP } from "./probability";
+import { getSpellEffect, isKnownSpellEffect, shouldIgnoreSpellImpact } from "./spellEffects";
 import { formatDecimal, formatPercent, shortType, sum, titleCase } from "./utils";
 
 export function comparePlayerLuck(players) {
@@ -181,25 +182,32 @@ export function summarizeSwingEvents(combats, disciplineTests, rollGroups) {
 }
 
 export function summarizeSpellImpact(activeEffects, rollGroups) {
-  return activeEffects.map((effect, index) => {
-    const nextEffectIndex = activeEffects[index + 1]?.eventIndex ?? Infinity;
-    const targetNames = new Set(effect.targetNames);
-    const windowEnd = Math.min(nextEffectIndex, effect.eventIndex + 40);
-    const relatedGroups = rollGroups.filter(
-      (group) =>
-        group.eventIndex > effect.eventIndex &&
-        group.eventIndex <= windowEnd &&
-        (targetNames.has(group.unitName) || group.unitName === effect.caster.name),
-    );
+  const visibleEffects = activeEffects.filter((effect) => !shouldIgnoreSpellImpact(effect.name));
+  return visibleEffects.map((effect, index) => {
+    const definition = getSpellEffect(effect.name);
+    const nextEffectIndex = visibleEffects[index + 1]?.eventIndex ?? Infinity;
+    const windowEnd = definition.windowEvents
+      ? effect.eventIndex + definition.windowEvents
+      : Math.min(nextEffectIndex, effect.eventIndex + 40);
+    const relatedGroups = rollGroups
+      .filter((group) => group.eventIndex > effect.eventIndex && group.eventIndex <= windowEnd)
+      .map((group) => ({ group, reason: definition.affects(effect, group) }))
+      .filter((item) => item.reason);
+    const groups = relatedGroups.map((item) => item.group);
     return {
       ...effect,
+      known: isKnownSpellEffect(effect.name),
+      ruleText: definition.text,
+      tags: definition.tags,
+      estimate: definition.estimate?.(effect) ?? null,
       windowEnd,
-      relatedRollGroups: relatedGroups.length,
-      successDelta: sum(relatedGroups.map((group) => group.successDelta)),
-      rerollsApplied: sum(relatedGroups.map((group) => group.rerolls?.applied || 0)),
-      rerollsAvailable: sum(relatedGroups.map((group) => group.rerolls?.available || 0)),
+      relatedRollGroups: groups.length,
+      successDelta: sum(groups.map((group) => group.successDelta)),
+      rerollsApplied: sum(groups.map((group) => group.rerolls?.applied || 0)),
+      rerollsAvailable: sum(groups.map((group) => group.rerolls?.available || 0)),
       notableGroups: relatedGroups
-        .filter((group) => Math.abs(group.successDelta) >= 1 || group.rerolls?.available)
+        .filter(({ group }) => Math.abs(group.successDelta) >= 1 || group.rerolls?.available)
+        .map(({ group, reason }) => ({ ...group, impactReason: reason }))
         .slice(0, 4),
     };
   });

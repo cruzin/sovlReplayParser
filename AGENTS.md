@@ -34,8 +34,10 @@ If PowerShell cannot execute the local `.cmd` shims in the sandbox, run TypeScri
 - `src/parser/sovlReplay.ts` is the parser orchestration layer. It parses replay JSON, extracts events, creates roll groups, hydrates player luck, and returns the analysis object consumed by the UI.
 - `src/parser/probability.ts` contains probability/statistics helpers: D6 targets, 2D6 discipline chance, binomial combat distributions, z/p-value helpers, and chi-square face distribution checks.
 - `src/parser/rerolls.ts` normalizes dice rolls, decodes reroll types, adjusts expected success probabilities, and summarizes reroll availability/application.
+- `src/parser/spellEffects.ts` maps known spell/buff rules to the roll groups they should affect.
 - `src/parser/summaries.ts` builds higher-level analysis: player luck comparison, unlikely fights, unit fates, swing events, spell/buff impact, objective timeline, and the currently hidden match-result inference.
 - `src/parser/utils.ts` contains replay-shape helpers, event type cleanup, unknown units, text cleanup, and small formatting/math helpers.
+- `src/data/catalogue.json` is a local copy of the generated SOVL catalogue from `cruzin/sovlListBuilder`; use it as reference data, not as the replay source of truth.
 
 ## Important Domain Assumptions
 
@@ -43,11 +45,18 @@ If PowerShell cannot execute the local `.cmd` shims in the sandbox, run TypeScri
 - D6 targets are interpreted as `target+`.
 - Discipline is interpreted as `2D6 <= unitDiscipline - penalty`, unless the test is detected as crumble.
 - Undead-style crumble is detected when the break-test rolls are marked as D3 or the test has a crumble flag. These are shown as model losses, not pass/fail discipline.
+- D3 rolls, including artillery/scatter/healing-style rolls, must not be counted in D6 player luck, face distribution, raw pip totals, first-half, latter-half, or batch luck. Keep them available for event context only.
 - Reroll types currently mean:
   - `1`: reroll failed dice
   - `2`: reroll successful dice
   - `3`: reroll failed natural 1s
   - `4`: reroll successful natural 6s
+- Known spell/buff impact rules currently mapped:
+  - Hex Of Ruin: target unit has `-2 Defense`; look for target damage-save rolls.
+  - Primal Fury: target unit has `+1 Power` and rerolls missed attack rolls; look for target attack rolls and enemy saves against that unit.
+  - Doom Bell: all friendly units have Frenzy; look for friendly attack rolls.
+  - Blood Frenzy: target unit loses D3 wounds and gets `+1 Attack`; estimate extra attacks from front-rank model count (`min(width, count)`). This is not the same as Frenzy rerolls.
+  - Divine Favour: target unit has `+1 Skill` and rerolls failed discipline; look for target attack and discipline rolls.
 - Spell/buff impact is heuristic. It links roll groups shortly after an effect to the caster/target names. Duplicate unit names can blur attribution.
 - Objective Control was removed because the inferred state-code mapping was not reliable enough.
 - Match Result inference was removed from the active analysis flow until the victory rules/data are better understood.

@@ -61,14 +61,7 @@ export function analyzeReplay(text, title = "Uploaded replay") {
     }
   });
 
-  const flattenedRolls = rollGroups.flatMap((group) =>
-    group.rolls.map((roll) => ({
-      ...roll,
-      playerId: group.playerId,
-      expectedSuccess: roll.expectedSuccess,
-      successVariance: roll.successVariance,
-    })),
-  );
+  const flattenedRolls = flattenScoredD6Rolls(rollGroups);
   hydratePlayerLuck(players, flattenedRolls);
   const halfwayEventIndex = Math.floor(events.length / 2);
   const firstHalfLuck = analyzeSegmentLuck(players, rollGroups, 0, halfwayEventIndex, "First half");
@@ -235,14 +228,7 @@ function analyzeSegmentLuck(sourcePlayers, rollGroups, startEventIndex, endEvent
   const segmentGroups = rollGroups.filter(
     (group) => group.eventIndex >= startEventIndex && group.eventIndex < endEventIndex,
   );
-  const rolls = segmentGroups.flatMap((group) =>
-    group.rolls.map((roll) => ({
-      ...roll,
-      playerId: group.playerId,
-      expectedSuccess: roll.expectedSuccess,
-      successVariance: roll.successVariance,
-    })),
-  );
+  const rolls = flattenScoredD6Rolls(segmentGroups);
   hydratePlayerLuck(players, rolls);
   return {
     label,
@@ -253,6 +239,17 @@ function analyzeSegmentLuck(sourcePlayers, rollGroups, startEventIndex, endEvent
     players,
     favor: comparePlayerLuck(players),
   };
+}
+
+function flattenScoredD6Rolls(rollGroups) {
+  return rollGroups.flatMap((group) =>
+    group.rolls.map((roll) => ({
+      ...roll,
+      playerId: group.playerId,
+      expectedSuccess: roll.expectedSuccess,
+      successVariance: roll.successVariance,
+    })).filter((roll) => !roll.isD3),
+  );
 }
 
 function makeAggregatePlayer(name) {
@@ -343,6 +340,8 @@ function extractUnits(list, player) {
       sourceId: entry?.unitID || "",
       name: entry?.flavourName || titleCase(splitIdentifier(entry?.unitID || "Unknown unit")),
       count: Number(entry?.count || 0),
+      width: Number(entry?.width || 0),
+      customWidthSet: Boolean(entry?.customWidthSet),
       hasCharacter: Boolean(entry?.hasCharacter),
     })),
   );
@@ -400,8 +399,24 @@ function analyzeCombat(event, eventIndex, unitById) {
 }
 
 function analyzeCombatStep(step, attacker, defender, eventIndex, side) {
-  const toHit = analyzeCombatRoll(step?.toHit, attacker, `${attacker.name} attacks ${defender.name}`, eventIndex, side, "hit");
-  const save = analyzeCombatRoll(step?.save, defender, `${defender.name} saves vs ${attacker.name}`, eventIndex, side, "save");
+  const toHit = analyzeCombatRoll(
+    step?.toHit,
+    attacker,
+    defender,
+    `${attacker.name} attacks ${defender.name}`,
+    eventIndex,
+    side,
+    "hit",
+  );
+  const save = analyzeCombatRoll(
+    step?.save,
+    defender,
+    attacker,
+    `${defender.name} saves vs ${attacker.name}`,
+    eventIndex,
+    side,
+    "save",
+  );
   const attacks = toHit.rolls.length;
   const pHit = toHit.expectedPerRoll;
   const pSave = save.expectedPerRoll;
@@ -413,7 +428,7 @@ function analyzeCombatStep(step, attacker, defender, eventIndex, side) {
   };
 }
 
-function analyzeCombatRoll(roll, unit, label, eventIndex, side, phase) {
+function analyzeCombatRoll(roll, unit, opposingUnit, label, eventIndex, side, phase) {
   const baseProbability = probabilityForD6Target(roll?.target);
   const rolls = values(roll?.rolls).map((item) => normalizeRoll(item, baseProbability, roll?.target));
   const expectedPerRoll = rolls.length ? sum(rolls.map((item) => item.expectedSuccess)) / rolls.length : baseProbability;
@@ -426,6 +441,7 @@ function analyzeCombatRoll(roll, unit, label, eventIndex, side, phase) {
     playerId: unit.playerId,
     playerName: unit.playerName,
     unitName: unit.name,
+    opposingUnitName: opposingUnit.name,
     phase,
     target: roll?.target ?? null,
     targetLabel: roll?.target > 0 ? `${roll.target}+` : "special",
@@ -436,7 +452,31 @@ function analyzeCombatRoll(roll, unit, label, eventIndex, side, phase) {
     successDelta: successes - expectedSuccesses,
     rerolls: summarizeRollRerolls(rolls),
     preRollText: stripUnityRichText(roll?.preRollText || ""),
+    statComparison: parseStatComparison(roll?.preRollText || ""),
   };
+}
+
+function parseStatComparison(text) {
+  const clean = stripUnityRichText(text || "");
+  const skill = clean.match(/Skill\s+(\d+)\s+VS\s+Skill\s+(\d+)/i);
+  if (skill) {
+    return {
+      type: "skill",
+      attackerSkill: Number(skill[1]),
+      defenderSkill: Number(skill[2]),
+      text: clean,
+    };
+  }
+  const power = clean.match(/Power\s+(\d+)\s+VS\s+Defense\s+(\d+)/i);
+  if (power) {
+    return {
+      type: "power-defense",
+      power: Number(power[1]),
+      defense: Number(power[2]),
+      text: clean,
+    };
+  }
+  return clean ? { type: "unknown", text: clean } : null;
 }
 
 function analyzeRangedAttack(event, eventIndex, type, unitById) {

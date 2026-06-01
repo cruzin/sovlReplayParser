@@ -57,17 +57,24 @@ export function SpellImpact({ impacts }) {
             <span>
               #{impact.eventIndex} - {impact.caster.name} to {summarizeTargets(impact.targetNames)}
             </span>
+            <small>{impact.ruleText}</small>
           </div>
           <div className="impact-stats">
             <span>{impact.relatedRollGroups} roll groups</span>
             <span>{impact.rerollsApplied}/{impact.rerollsAvailable} rerolls</span>
+            <span>{impact.tags?.join(", ")}</span>
             <strong className={impact.successDelta >= 0 ? "positive" : "negative"}>
               {signed(impact.successDelta, 1)}
             </strong>
           </div>
           {impact.notableGroups.length > 0 && (
-            <p>{impact.notableGroups.map((group) => `${group.unitName} ${signed(group.successDelta, 1)}`).join("; ")}</p>
+            <p>
+              {impact.notableGroups
+                .map((group) => `${group.unitName} ${signed(group.successDelta, 1)} (${group.impactReason})`)
+                .join("; ")}
+            </p>
           )}
+          {impact.estimate && <p>{impact.estimate.summary}</p>}
         </div>
       ))}
     </div>

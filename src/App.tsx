@@ -7,7 +7,9 @@ import {
   Dice5,
   Files,
   FileUp,
+  Moon,
   Swords,
+  Sun,
   Trophy,
   Users,
   WandSparkles,
@@ -21,6 +23,19 @@ import { PlayerLuck } from "./components/PlayerLuck";
 import { CombatTable, DisciplineTable, RollGroups, UnitRoster, UnlikelyWinsSummary } from "./components/ReplayTables";
 
 const sampleManifestUrl = `${import.meta.env.BASE_URL}samples/manifest.json`;
+const themeStorageKey = "sovl-replay-theme";
+
+type Theme = "light" | "dark";
+
+function getInitialTheme(): Theme {
+  try {
+    const savedTheme = localStorage.getItem(themeStorageKey);
+    if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+  } catch {
+    // Private or restricted browser contexts can block storage access.
+  }
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
 export function App() {
   const [samples, setSamples] = useState([]);
@@ -28,7 +43,17 @@ export function App() {
   const [analysis, setAnalysis] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const isBatch = analysis?.mode === "batch";
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem(themeStorageKey, theme);
+    } catch {
+      // The theme still applies for the current session if storage is unavailable.
+    }
+  }, [theme]);
 
   useEffect(() => {
     fetch(sampleManifestUrl)
@@ -115,6 +140,16 @@ export function App() {
           )}
         </div>
         <div className="controls">
+          <button
+            className="theme-toggle"
+            type="button"
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+          >
+            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+            <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          </button>
           <label className="select-wrap" title="Choose bundled replay">
             <ChevronsUpDown size={16} />
             <select
