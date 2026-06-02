@@ -1,4 +1,4 @@
-import { classifyLuck, twoTailedNormalP } from "./probability";
+import { classifyLuck, compareDistributions, twoTailedNormalP } from "./probability";
 import { getSpellEffect, isKnownSpellEffect, shouldIgnoreSpellImpact } from "./spellEffects";
 import { formatDecimal, formatPercent, shortType, sum, titleCase } from "./utils";
 
@@ -35,6 +35,240 @@ export function summarizeUnlikelyWins(combats) {
     underdogWinCount: underdogWins.length,
     totalFlagged: combined.length,
     fights: combined,
+  };
+}
+
+export function summarizeTurnRecaps(combats, players, activeEffects = []) {
+  const combatsByTurn = new Map<any, any[]>();
+  for (const combat of combats) {
+    if (!combat.turn || combat.turn <= 1) continue;
+    const turnCombats = combatsByTurn.get(combat.turn) ?? [];
+    turnCombats.push(combat);
+    combatsByTurn.set(combat.turn, turnCombats);
+  }
+
+  return [...combatsByTurn.entries()]
+    .sort(([turnA], [turnB]) => Number(turnA) - Number(turnB))
+    .map(([turn, turnCombats]) => {
+      const turnEffects = activeEffects.filter((effect) => effect.turn === turn);
+      const combatGroups = groupConnectedCombats(turnCombats).map((group, index) =>
+        summarizeTurnCombatGroup(group, turn, index, turnEffects),
+      );
+      const playerSummaries = players.map((player) => {
+        const expectedWounds = sum(combatGroups.map((group) => group.players[player.id]?.expectedWounds ?? 0));
+        const actualWounds = sum(combatGroups.map((group) => group.players[player.id]?.actualWounds ?? 0));
+        const winChance = combatGroups.length
+          ? sum(combatGroups.map((group) => group.players[player.id]?.winChance ?? 0)) / combatGroups.length
+          : 0;
+        return {
+          id: player.id,
+          name: player.name,
+          expectedWounds,
+          actualWounds,
+          winChance,
+        };
+      });
+      const favor = describeTurnFavor(playerSummaries);
+      const combatFavorCounts = summarizeCombatFavorCounts(combatGroups, players);
+      return {
+        turn,
+        combats: combatGroups,
+        favor,
+        combatFavorCounts,
+        totalCombats: turnCombats.length,
+      };
+    })
+    .filter((turn) => turn.combats.length);
+}
+
+function summarizeCombatFavorCounts(combatGroups, players) {
+  const [a, b] = players;
+  const counts = {
+    player1: 0,
+    even: 0,
+    player2: 0,
+    player1Name: a?.name ?? "Player 1",
+    player2Name: b?.name ?? "Player 2",
+  };
+  if (!a || !b) return counts;
+
+  for (const combat of combatGroups) {
+    const chanceA = combat.players[a.id]?.winChance ?? 0.5;
+    const chanceB = combat.players[b.id]?.winChance ?? 0.5;
+    const difference = Math.abs(chanceA - chanceB);
+    if (difference < 0.08) {
+      counts.even += 1;
+    } else if (chanceA > chanceB) {
+      counts.player1 += 1;
+    } else {
+      counts.player2 += 1;
+    }
+  }
+
+  return counts;
+}
+
+function groupConnectedCombats(combats) {
+  const remaining = [...combats];
+  const groups = [];
+
+  while (remaining.length) {
+    const group = [remaining.shift()];
+    const unitIds = new Set(group.flatMap((combat) => [combat.unitA.globalId, combat.unitB.globalId]));
+    let changed = true;
+
+    while (changed) {
+      changed = false;
+      for (let index = remaining.length - 1; index >= 0; index -= 1) {
+        const combat = remaining[index];
+        if (unitIds.has(combat.unitA.globalId) || unitIds.has(combat.unitB.globalId)) {
+          group.push(combat);
+          unitIds.add(combat.unitA.globalId);
+          unitIds.add(combat.unitB.globalId);
+          remaining.splice(index, 1);
+          changed = true;
+        }
+      }
+    }
+
+    groups.push(group);
+  }
+
+  return groups;
+}
+
+function summarizeTurnCombatGroup(combats, turn, groupIndex, turnEffects = []) {
+  const playerIds = [...new Set(combats.flatMap((combat) => [combat.unitA.playerId, combat.unitB.playerId]))].sort();
+  const unitsByPlayer = new Map(playerIds.map((playerId) => [playerId, new Map()]));
+  const commandersByPlayer = new Map(playerIds.map((playerId) => [playerId, new Map()]));
+  const specialRulesByPlayer = new Map(playerIds.map((playerId) => [playerId, []]));
+  const activeEffectsByPlayer = new Map(playerIds.map((playerId) => [playerId, new Map()]));
+  const firstEventIndex = Math.min(...combats.map((combat) => combat.eventIndex));
+  const lastEventIndex = Math.max(...combats.map((combat) => combat.eventIndex));
+  const statsByPlayer = new Map(
+    playerIds.map((playerId) => [
+      playerId,
+      {
+        expectedWounds: 0,
+        actualWounds: 0,
+        woundDistribution: [1],
+      },
+    ]),
+  );
+
+  for (const combat of combats) {
+    unitsByPlayer.get(combat.unitA.playerId)?.set(combat.unitA.globalId, combat.unitA);
+    unitsByPlayer.get(combat.unitB.playerId)?.set(combat.unitB.globalId, combat.unitB);
+    for (const commander of combat.commanders ?? []) {
+      commandersByPlayer.get(commander.playerId)?.set(`${commander.unit.globalId}-${commander.sourceId}`, commander);
+    }
+    for (const rule of combat.specialRules ?? []) {
+      specialRulesByPlayer.get(rule.playerId)?.push(rule);
+    }
+    addCombatSide(statsByPlayer.get(combat.unitA.playerId), combat.expectedA, combat.actualA, combat.woundDistributionA);
+    addCombatSide(statsByPlayer.get(combat.unitB.playerId), combat.expectedB, combat.actualB, combat.woundDistributionB);
+  }
+
+  const unitIds = new Set([...unitsByPlayer.values()].flatMap((unitMap) => [...unitMap.keys()]));
+  for (const effect of turnEffects) {
+    if (effect.eventIndex > lastEventIndex) continue;
+    const matchingTargets = effect.targets.filter((target) => unitIds.has(target.globalId));
+    if (!matchingTargets.length) continue;
+    for (const target of matchingTargets) {
+      const playerEffects = activeEffectsByPlayer.get(target.playerId);
+      playerEffects?.set(`${effect.id}-${target.globalId}`, {
+        name: effect.name,
+        casterName: effect.casterName,
+        casterIsCharacter: effect.casterIsCharacter,
+        targetName: target.name,
+        beforeCombat: effect.eventIndex < firstEventIndex,
+      });
+    }
+  }
+
+  const [firstPlayerId, secondPlayerId] = playerIds;
+  const firstStats = statsByPlayer.get(firstPlayerId);
+  const secondStats = statsByPlayer.get(secondPlayerId);
+  const firstWinChance =
+    firstStats && secondStats ? compareDistributions(firstStats.woundDistribution, secondStats.woundDistribution) : 0.5;
+  const actualMargin = (firstStats?.actualWounds ?? 0) - (secondStats?.actualWounds ?? 0);
+  const expectedMargin = (firstStats?.expectedWounds ?? 0) - (secondStats?.expectedWounds ?? 0);
+  const winningPlayerId = actualMargin > 0 ? firstPlayerId : actualMargin < 0 ? secondPlayerId : null;
+  const winnerChance =
+    winningPlayerId === firstPlayerId ? firstWinChance : winningPlayerId === secondPlayerId ? 1 - firstWinChance : 0.5;
+
+  return {
+    id: `turn-${turn}-combat-${groupIndex}`,
+    turn,
+    eventIndexes: combats.map((combat) => combat.eventIndex),
+    unitsByPlayer: Object.fromEntries(
+      playerIds.map((playerId) => [playerId, [...(unitsByPlayer.get(playerId)?.values() ?? [])]]),
+    ),
+    commandersByPlayer: Object.fromEntries(
+      playerIds.map((playerId) => [playerId, [...(commandersByPlayer.get(playerId)?.values() ?? [])]]),
+    ),
+    specialRulesByPlayer: Object.fromEntries(playerIds.map((playerId) => [playerId, specialRulesByPlayer.get(playerId) ?? []])),
+    activeEffectsByPlayer: Object.fromEntries(
+      playerIds.map((playerId) => [playerId, [...(activeEffectsByPlayer.get(playerId)?.values() ?? [])]]),
+    ),
+    players: Object.fromEntries(
+      playerIds.map((playerId) => {
+        const stats = statsByPlayer.get(playerId);
+        return [
+          playerId,
+          {
+            expectedWounds: stats?.expectedWounds ?? 0,
+            actualWounds: stats?.actualWounds ?? 0,
+            winChance: playerId === firstPlayerId ? firstWinChance : 1 - firstWinChance,
+          },
+        ];
+      }),
+    ),
+    expectedMargin,
+    actualMargin,
+    swing: actualMargin - expectedMargin,
+    winningPlayerId,
+    winnerChance,
+    outcome: winningPlayerId == null ? "Draw by wounds" : "Won by wounds",
+    combatCount: combats.length,
+  };
+}
+
+function addCombatSide(stats, expectedWounds, actualWounds, distribution) {
+  if (!stats) return;
+  stats.expectedWounds += expectedWounds;
+  stats.actualWounds += actualWounds;
+  stats.woundDistribution = convolveDistributions(stats.woundDistribution, distribution || [1]);
+}
+
+function convolveDistributions(a, b) {
+  const result = Array(a.length + b.length - 1).fill(0);
+  for (let indexA = 0; indexA < a.length; indexA += 1) {
+    for (let indexB = 0; indexB < b.length; indexB += 1) {
+      result[indexA + indexB] += a[indexA] * b[indexB];
+    }
+  }
+  return result;
+}
+
+function describeTurnFavor(players) {
+  const [a, b] = players;
+  if (!a || !b) return { label: "No player comparison", favoredPlayerName: null, difference: 0 };
+  const difference = Math.abs(a.winChance - b.winChance);
+  const favored = a.winChance >= b.winChance ? a : b;
+  const label =
+    difference < 0.08
+      ? "Even turn"
+      : difference < 0.18
+        ? `${favored.name} slightly favored`
+        : difference < 0.32
+          ? `${favored.name} favored`
+          : `${favored.name} very favored`;
+  return {
+    label,
+    favoredPlayerId: difference < 0.08 ? null : favored.id,
+    favoredPlayerName: difference < 0.08 ? null : favored.name,
+    difference,
   };
 }
 

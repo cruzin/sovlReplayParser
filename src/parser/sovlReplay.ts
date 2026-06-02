@@ -13,6 +13,7 @@ import {
   comparePlayerLuck,
   summarizeSpellImpact,
   summarizeSwingEvents,
+  summarizeTurnRecaps,
   summarizeUnlikelyWins,
   summarizeUnitFates,
 } from "./summaries";
@@ -35,15 +36,20 @@ export function analyzeReplay(text, title = "Uploaded replay") {
   const rangedAttacks = [];
   const disciplineTests = [];
   const activeEffects = [];
+  let currentTurn = 0;
 
   events.forEach((event, eventIndex) => {
     const type = shortType(event?.$type);
+    if (type === "TurnStartEvent") {
+      currentTurn = Number(event.turn || currentTurn);
+    }
+
     if (type === "BuffDebuffEvent") {
-      activeEffects.push(analyzeActiveEffect(event, eventIndex, unitById));
+      activeEffects.push(analyzeActiveEffect(event, eventIndex, unitById, currentTurn));
     }
 
     if (type === "CombatContactEvent") {
-      const combat = analyzeCombat(event, eventIndex, unitById);
+      const combat = analyzeCombat(event, eventIndex, unitById, currentTurn);
       combats.push(combat);
       rollGroups.push(...combat.rollGroups);
     }
@@ -73,6 +79,7 @@ export function analyzeReplay(text, title = "Uploaded replay") {
   const unitFates = summarizeUnitFates(units, events, combats, rangedAttacks, disciplineTests);
   const swingEvents = summarizeSwingEvents(combats, disciplineTests, rollGroups);
   const spellImpact = summarizeSpellImpact(activeEffects, rollGroups);
+  const turnRecaps = summarizeTurnRecaps(combats, players, activeEffects);
 
   return {
     title,
@@ -92,6 +99,7 @@ export function analyzeReplay(text, title = "Uploaded replay") {
     unitFates,
     swingEvents,
     spellImpact,
+    turnRecaps,
     rollGroups: rollGroups.sort((a, b) => Math.abs(b.successDelta) - Math.abs(a.successDelta)),
     totalDice: flattenedRolls.length,
   };
@@ -343,24 +351,43 @@ function extractUnits(list, player) {
       width: Number(entry?.width || 0),
       customWidthSet: Boolean(entry?.customWidthSet),
       hasCharacter: Boolean(entry?.hasCharacter),
+      commander: extractCommander(entry),
     })),
   );
 }
 
-function analyzeActiveEffect(event, eventIndex, unitById) {
+function extractCommander(entry) {
+  if (!entry?.hasCharacter || !entry.character?.unitID) return null;
+  const character = entry.character;
+  const name = character.flavourName || character.firstName || titleCase(splitIdentifier(character.unitID));
+  return {
+    name,
+    unitType: titleCase(splitIdentifier(character.unitID)),
+    sourceId: character.unitID,
+    magicItems: values(character.magicItems),
+    propertySelections: values(character.propertySelections),
+    spells: values(character.spells),
+  };
+}
+
+function analyzeActiveEffect(event, eventIndex, unitById, turn) {
   const caster = unitById.get(event.unitID) || unknownUnit(event.unitID);
   const targets = values(event.targets).map((targetId) => unitById.get(targetId) || unknownUnit(targetId));
+  const casterIsCharacter = Boolean(event.casterIsCharacter);
   return {
     id: `effect-${eventIndex}`,
     eventIndex,
+    turn,
     name: event.spellName || "Unknown effect",
     caster,
+    casterIsCharacter,
+    casterName: casterIsCharacter && caster.commander ? caster.commander.name : caster.name,
     targets,
     targetNames: targets.map((unit) => unit.name),
   };
 }
 
-function analyzeCombat(event, eventIndex, unitById) {
+function analyzeCombat(event, eventIndex, unitById, turn) {
   const unitA = unitById.get(event.uID1) || unknownUnit(event.uID1);
   const unitB = unitById.get(event.uID2) || unknownUnit(event.uID2);
   const stepA = analyzeCombatStep(event.stepOne, unitA, unitB, eventIndex, "A");
@@ -377,9 +404,17 @@ function analyzeCombat(event, eventIndex, unitById) {
   const underdogWon = Boolean(winner && winnerPreRollChance < 0.4);
   const highSwing = Math.abs(actualMarginA - expectedMarginA) >= 2;
   const edgeLabel = `${unitA.name} ${formatPercent(winChanceA)} / ${unitB.name} ${formatPercent(1 - winChanceA)}`;
+  const commanderAInvolved = Boolean(
+    unitA.commander && (event.isCharacter1 || stepA.characterAttacks || stepB.characterSaves),
+  );
+  const commanderBInvolved = Boolean(
+    unitB.commander && (event.isCharacter2 || stepB.characterAttacks || stepA.characterSaves),
+  );
 
   return {
     id: `combat-${eventIndex}`,
+    eventIndex,
+    turn,
     unitA,
     unitB,
     expectedA,
@@ -394,8 +429,37 @@ function analyzeCombat(event, eventIndex, unitById) {
     underdogWon,
     highSwing,
     edgeLabel,
+    woundDistributionA: stepA.woundDistribution,
+    woundDistributionB: stepB.woundDistribution,
+    commanders: [
+      commanderAInvolved ? { ...unitA.commander, unit: unitA, playerId: unitA.playerId, playerName: unitA.playerName } : null,
+      commanderBInvolved ? { ...unitB.commander, unit: unitB, playerId: unitB.playerId, playerName: unitB.playerName } : null,
+    ].filter(Boolean),
+    specialRules: summarizeCombatSpecialRules([
+      { unit: unitA, step: stepA, commanderInvolved: commanderAInvolved },
+      { unit: unitB, step: stepB, commanderInvolved: commanderBInvolved },
+    ]),
     rollGroups: [...stepA.rollGroups, ...stepB.rollGroups],
   };
+}
+
+function summarizeCombatSpecialRules(sides) {
+  return sides.flatMap(({ unit, step, commanderInvolved }) => {
+    const doubleWoundHits = step.toHit.rolls.filter((roll) => roll.success && roll.doubleWounds).length;
+    if (!doubleWoundHits) return [];
+    return [
+      {
+        type: "double-wounds",
+        label: `${commanderInvolved && unit.commander ? unit.commander.name : unit.name}: ${doubleWoundHits} double-wound hit${
+          doubleWoundHits === 1 ? "" : "s"
+        }`,
+        unitName: unit.name,
+        playerId: unit.playerId,
+        commanderName: commanderInvolved ? unit.commander?.name : null,
+        count: doubleWoundHits,
+      },
+    ];
+  });
 }
 
 function analyzeCombatStep(step, attacker, defender, eventIndex, side) {
@@ -424,6 +488,10 @@ function analyzeCombatStep(step, attacker, defender, eventIndex, side) {
   return {
     expectedWounds: attacks * pWound,
     woundDistribution: binomialDistribution(attacks, pWound),
+    toHit,
+    save,
+    characterAttacks: Boolean(toHit.isCharacter),
+    characterSaves: Boolean(save.isCharacter),
     rollGroups: [toHit, save].filter((group) => group.rolls.length),
   };
 }
@@ -453,6 +521,7 @@ function analyzeCombatRoll(roll, unit, opposingUnit, label, eventIndex, side, ph
     rerolls: summarizeRollRerolls(rolls),
     preRollText: stripUnityRichText(roll?.preRollText || ""),
     statComparison: parseStatComparison(roll?.preRollText || ""),
+    isCharacter: Boolean(roll?.isCharacter),
   };
 }
 
