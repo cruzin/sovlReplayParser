@@ -700,6 +700,148 @@ h1 {
   padding: 10px;
 }
 
+.turn-recap-list {
+  display: grid;
+  gap: 12px;
+}
+
+.turn-recap {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #ded6ca;
+  border-radius: 8px;
+  background: #fffaf2;
+  padding: 12px;
+}
+
+.turn-recap-heading,
+.turn-combat-main,
+.turn-combat-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.turn-recap-heading {
+  justify-content: space-between;
+}
+
+.turn-recap-heading h3 {
+  margin-bottom: 2px;
+  font-size: 0.98rem;
+}
+
+.turn-recap-heading span,
+.turn-side span,
+.turn-combat-stats span {
+  color: #66717b;
+  font-size: 0.84rem;
+}
+
+.turn-side .commander-line {
+  color: #7d4d79;
+  font-weight: 800;
+}
+
+.turn-side .special-rule-line {
+  color: #8b5724;
+  font-weight: 800;
+}
+
+.turn-side .active-effect-line {
+  color: #31576a;
+  font-weight: 800;
+}
+
+.turn-combat-list {
+  display: grid;
+  gap: 8px;
+}
+
+.turn-favor-counts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.turn-favor-counts span {
+  border: 1px solid #e2d8c9;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #66717b;
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.turn-combat-card {
+  display: grid;
+  gap: 9px;
+  border: 1px solid #e2d8c9;
+  border-radius: 8px;
+  background: #fffdf8;
+  padding: 10px;
+}
+
+.turn-combat-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.78fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.turn-side {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.turn-side:last-child {
+  text-align: right;
+}
+
+.turn-center {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  place-items: center;
+  text-align: center;
+}
+
+.turn-versus {
+  display: grid;
+  min-width: 34px;
+  place-items: center;
+  color: #7d8990;
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.turn-center span {
+  color: #66717b;
+  font-size: 0.82rem;
+}
+
+.turn-combat-stats {
+  flex-wrap: wrap;
+  border-top: 1px solid #ebe4da;
+  padding-top: 8px;
+}
+
+.turn-combat-stats strong {
+  margin-left: auto;
+}
+
+.player-0 {
+  color: #28715f;
+}
+
+.player-1 {
+  color: #7d4d79;
+}
+
 .roster,
 .roll-list {
   display: grid;
@@ -851,6 +993,20 @@ td span {
   .unlikely-summary {
     grid-template-columns: 1fr;
   }
+
+  .turn-combat-main {
+    grid-template-columns: 1fr;
+  }
+
+  .turn-side,
+  .turn-side:last-child {
+    text-align: left;
+  }
+
+  .turn-center {
+    justify-items: start;
+    text-align: left;
+  }
 }
 
 @media (max-width: 460px) {
@@ -887,6 +1043,12 @@ td span {
 :root[data-theme="dark"] .impact-row small,
 :root[data-theme="dark"] .unlikely-summary span,
 :root[data-theme="dark"] .unlikely-summary p,
+:root[data-theme="dark"] .turn-recap-heading span,
+:root[data-theme="dark"] .turn-side span,
+:root[data-theme="dark"] .turn-combat-stats span,
+:root[data-theme="dark"] .turn-center span,
+:root[data-theme="dark"] .turn-favor-counts span,
+:root[data-theme="dark"] .turn-versus,
 :root[data-theme="dark"] th,
 :root[data-theme="dark"] td span,
 :root[data-theme="dark"] .empty {
@@ -947,7 +1109,9 @@ td span {
 :root[data-theme="dark"] .reroll-summary div,
 :root[data-theme="dark"] .bulk-note,
 :root[data-theme="dark"] .unlikely-summary > div:not(.flagged-fights),
+:root[data-theme="dark"] .turn-recap,
 :root[data-theme="dark"] .mini-badge,
+:root[data-theme="dark"] .turn-favor-counts span,
 :root[data-theme="dark"] .fate-stats span,
 :root[data-theme="dark"] .impact-stats span {
   border-color: #39454e;
@@ -956,7 +1120,8 @@ td span {
 }
 
 :root[data-theme="dark"] .score-card,
-:root[data-theme="dark"] .flagged-fight {
+:root[data-theme="dark"] .flagged-fight,
+:root[data-theme="dark"] .turn-combat-card {
   border-color: #39454e;
   background: #151b21;
 }
@@ -977,8 +1142,10 @@ td span {
 :root[data-theme="dark"] .impact-row,
 :root[data-theme="dark"] .unit-row,
 :root[data-theme="dark"] .roll-row,
+:root[data-theme="dark"] .turn-combat-stats,
 :root[data-theme="dark"] td {
   border-bottom-color: #303a42;
+  border-top-color: #303a42;
 }
 
 :root[data-theme="dark"] .info-dot {
@@ -1038,4 +1205,24 @@ td span {
 
 :root[data-theme="dark"] .side-1 {
   background: #cb8bc4;
+}
+
+:root[data-theme="dark"] .player-0 {
+  color: #76d2b8;
+}
+
+:root[data-theme="dark"] .player-1 {
+  color: #cb8bc4;
+}
+
+:root[data-theme="dark"] .turn-side .commander-line {
+  color: #f1bf77;
+}
+
+:root[data-theme="dark"] .turn-side .special-rule-line {
+  color: #f1bf77;
+}
+
+:root[data-theme="dark"] .turn-side .active-effect-line {
+  color: #a9d7e5;
 }

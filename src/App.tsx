@@ -20,7 +20,14 @@ import { EffectsAndRerolls } from "./components/EffectsAndRerolls";
 import { SpellImpact, SwingEvents, UnitFate } from "./components/InsightPanels";
 import { Metric, Panel, PanelHeading } from "./components/Panel";
 import { PlayerLuck } from "./components/PlayerLuck";
-import { CombatTable, DisciplineTable, RollGroups, UnitRoster, UnlikelyWinsSummary } from "./components/ReplayTables";
+import {
+  CombatTable,
+  DisciplineTable,
+  RollGroups,
+  TurnByTurnRecap,
+  UnitRoster,
+  UnlikelyWinsSummary,
+} from "./components/ReplayTables";
 
 const sampleManifestUrl = `${import.meta.env.BASE_URL}samples/manifest.json`;
 const themeStorageKey = "sovl-replay-theme";
@@ -198,6 +205,10 @@ function SingleReplayAnalysis({ analysis }) {
         <Metric icon={<WandSparkles />} label="Active effects" value={analysis.activeEffects.length} />
         <Metric icon={<Trophy />} label="Unlikely fights" value={analysis.unlikelyWins.totalFlagged} />
       </section>
+
+      <Panel title="Turn By Turn Recap" icon={<Swords />}>
+        <TurnByTurnRecap turns={analysis.turnRecaps} players={analysis.players} />
+      </Panel>
 
       <section className="two-column">
         <Panel title="Player Luck" icon={<BarChart3 />}>
