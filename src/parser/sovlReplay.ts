@@ -9,6 +9,7 @@ import {
   twoTailedNormalP,
 } from "./probability";
 import { analyzeRollArray, mergeRerollTypes, normalizeRoll, summarizeRerolls, summarizeRollRerolls } from "./rerolls";
+import { inferFactionFromList } from "./catalogue";
 import {
   comparePlayerLuck,
   summarizeSpellImpact,
@@ -26,6 +27,8 @@ export function analyzeReplay(text, title = "Uploaded replay") {
     makePlayer(0, replay.player0Name || "Player 0"),
     makePlayer(1, replay.player1Name || "Player 1"),
   ];
+  players[0].faction = inferFactionFromList(replay.player0List);
+  players[1].faction = inferFactionFromList(replay.player1List);
   const units = [
     ...extractUnits(replay.player0List, players[0]),
     ...extractUnits(replay.player1List, players[1]),
@@ -174,6 +177,7 @@ export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis")
   const games = analyses.map((analysis) => ({
     title: analysis.title,
     players: analysis.players,
+    factions: analysis.players.map((player) => player.faction),
     favor: analysis.favor,
     totalDice: analysis.totalDice,
     combats: analysis.combats.length,
@@ -191,8 +195,61 @@ export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis")
     latterHalfLuck,
     totals,
     rerolls,
+    opponentFactions: summarizeOpponentFactions(analyses),
     games,
   };
+}
+
+function summarizeOpponentFactions(analyses) {
+  const playersByName = new Map();
+
+  for (const analysis of analyses) {
+    const [playerA, playerB] = analysis.players;
+    addFactionMatchup(playersByName, playerA, playerB?.faction);
+    addFactionMatchup(playersByName, playerB, playerA?.faction);
+  }
+
+  return [...playersByName.values()]
+    .map((player) => ({
+      ...player,
+      playedAsFactions: finalizeFactionCounts(player.playedAsFactions, player.games),
+      factions: finalizeFactionCounts(player.opponentFactions, player.games),
+    }))
+    .sort((a, b) => b.games - a.games || a.playerName.localeCompare(b.playerName));
+}
+
+function addFactionMatchup(playersByName, player, opponentFaction) {
+  if (!player) return;
+  const key = normalizePlayerKey(player.name);
+  const current = playersByName.get(key) ?? {
+    playerName: player.name,
+    games: 0,
+    playedAsFactions: new Map(),
+    opponentFactions: new Map(),
+  };
+  current.games += 1;
+  addFactionCount(current.playedAsFactions, player.faction);
+  addFactionCount(current.opponentFactions, opponentFaction);
+  playersByName.set(key, current);
+}
+
+function addFactionCount(factions, factionSummary) {
+  if (!factionSummary) return;
+  const faction = factions.get(factionSummary.id) ?? {
+    ...factionSummary,
+    games: 0,
+  };
+  faction.games += 1;
+  factions.set(factionSummary.id, faction);
+}
+
+function finalizeFactionCounts(factions, totalGames) {
+  return [...factions.values()]
+    .map((faction) => ({
+      ...faction,
+      percentage: totalGames ? faction.games / totalGames : 0,
+    }))
+    .sort((a, b) => b.games - a.games || a.name.localeCompare(b.name));
 }
 
 function addPlayerToAggregate(current, player) {
@@ -325,6 +382,7 @@ function makePlayer(id, name) {
   return {
     id,
     name,
+    faction: null,
     rolls: 0,
     successes: 0,
     expectedSuccesses: 0,

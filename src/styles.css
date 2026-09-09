@@ -530,6 +530,91 @@ h1 {
   color: #66717b;
 }
 
+.opponent-faction-overview {
+  display: grid;
+  gap: 12px;
+}
+
+.opponent-player-card {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #ded6ca;
+  border-radius: 8px;
+  background: #fffaf2;
+  padding: 12px;
+}
+
+.opponent-player-heading,
+.opponent-faction-row,
+.opponent-faction-detail > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.opponent-player-heading span,
+.opponent-faction-detail span {
+  color: #66717b;
+  font-size: 0.82rem;
+}
+
+.opponent-own-factions {
+  margin: -3px 0 2px;
+  color: #66717b;
+  font-size: 0.82rem;
+}
+
+.opponent-faction-list {
+  display: grid;
+  gap: 9px;
+}
+
+.opponent-faction-row {
+  align-items: start;
+}
+
+.opponent-faction-detail {
+  display: grid;
+  flex: 1;
+  gap: 5px;
+  min-width: 0;
+}
+
+.faction-badge {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #c7d1c5;
+  border-radius: 8px;
+  background: #eef5ed;
+  color: #385d52;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.faction-badge img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.opponent-faction-bar {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8e0d4;
+}
+
+.opponent-faction-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #3f8f7b;
+}
+
 .chip {
   border: 1px solid #c7d1c5;
   border-radius: 999px;
@@ -1032,6 +1117,9 @@ td span {
 :root[data-theme="dark"] .reroll-summary span,
 :root[data-theme="dark"] .effect-row span,
 :root[data-theme="dark"] .bulk-note span,
+:root[data-theme="dark"] .opponent-player-heading span,
+:root[data-theme="dark"] .opponent-own-factions,
+:root[data-theme="dark"] .opponent-faction-detail span,
 :root[data-theme="dark"] .score-card span,
 :root[data-theme="dark"] .fate-row span,
 :root[data-theme="dark"] .swing-row span,
@@ -1108,6 +1196,7 @@ td span {
 :root[data-theme="dark"] .player-card,
 :root[data-theme="dark"] .reroll-summary div,
 :root[data-theme="dark"] .bulk-note,
+:root[data-theme="dark"] .opponent-player-card,
 :root[data-theme="dark"] .unlikely-summary > div:not(.flagged-fights),
 :root[data-theme="dark"] .turn-recap,
 :root[data-theme="dark"] .mini-badge,
@@ -1161,6 +1250,7 @@ td span {
 
 :root[data-theme="dark"] .badge,
 :root[data-theme="dark"] .chip,
+:root[data-theme="dark"] .faction-badge,
 :root[data-theme="dark"] .mini-badge.hot {
   border-color: #357f6d;
   background: #16342d;
@@ -1181,6 +1271,14 @@ td span {
 
 :root[data-theme="dark"] .bar-track {
   background: #30363d;
+}
+
+:root[data-theme="dark"] .opponent-faction-bar {
+  background: #30363d;
+}
+
+:root[data-theme="dark"] .opponent-faction-bar span {
+  background: #76d2b8;
 }
 
 :root[data-theme="dark"] .bar-positive {
