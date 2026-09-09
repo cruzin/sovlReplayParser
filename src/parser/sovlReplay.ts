@@ -205,39 +205,51 @@ function summarizeOpponentFactions(analyses) {
 
   for (const analysis of analyses) {
     const [playerA, playerB] = analysis.players;
-    addOpponentFaction(playersByName, playerA, playerB?.faction);
-    addOpponentFaction(playersByName, playerB, playerA?.faction);
+    addFactionMatchup(playersByName, playerA, playerB?.faction);
+    addFactionMatchup(playersByName, playerB, playerA?.faction);
   }
 
   return [...playersByName.values()]
     .map((player) => ({
       ...player,
-      factions: [...player.factions.values()]
-        .map((faction) => ({
-          ...faction,
-          percentage: player.games ? faction.games / player.games : 0,
-        }))
-        .sort((a, b) => b.games - a.games || a.name.localeCompare(b.name)),
+      playedAsFactions: finalizeFactionCounts(player.playedAsFactions, player.games),
+      factions: finalizeFactionCounts(player.opponentFactions, player.games),
     }))
     .sort((a, b) => b.games - a.games || a.playerName.localeCompare(b.playerName));
 }
 
-function addOpponentFaction(playersByName, player, opponentFaction) {
-  if (!player || !opponentFaction) return;
+function addFactionMatchup(playersByName, player, opponentFaction) {
+  if (!player) return;
   const key = normalizePlayerKey(player.name);
   const current = playersByName.get(key) ?? {
     playerName: player.name,
     games: 0,
-    factions: new Map(),
+    playedAsFactions: new Map(),
+    opponentFactions: new Map(),
   };
   current.games += 1;
-  const faction = current.factions.get(opponentFaction.id) ?? {
-    ...opponentFaction,
+  addFactionCount(current.playedAsFactions, player.faction);
+  addFactionCount(current.opponentFactions, opponentFaction);
+  playersByName.set(key, current);
+}
+
+function addFactionCount(factions, factionSummary) {
+  if (!factionSummary) return;
+  const faction = factions.get(factionSummary.id) ?? {
+    ...factionSummary,
     games: 0,
   };
   faction.games += 1;
-  current.factions.set(opponentFaction.id, faction);
-  playersByName.set(key, current);
+  factions.set(factionSummary.id, faction);
+}
+
+function finalizeFactionCounts(factions, totalGames) {
+  return [...factions.values()]
+    .map((faction) => ({
+      ...faction,
+      percentage: totalGames ? faction.games / totalGames : 0,
+    }))
+    .sort((a, b) => b.games - a.games || a.name.localeCompare(b.name));
 }
 
 function addPlayerToAggregate(current, player) {

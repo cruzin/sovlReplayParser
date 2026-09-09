@@ -44,9 +44,10 @@ function OpponentFactionOverview({ overview }) {
       {overview.map((player) => (
         <div className="opponent-player-card" key={player.playerName}>
           <div className="opponent-player-heading">
-            <strong>{player.playerName}</strong>
+            <strong>{player.playerName}'s opponents</strong>
             <span>{player.games} game{player.games === 1 ? "" : "s"}</span>
           </div>
+          <p className="opponent-own-factions">Played as: {formatFactionCounts(player.playedAsFactions)}</p>
           <div className="opponent-faction-list">
             {player.factions.map((faction) => (
               <div className="opponent-faction-row" key={faction.id}>
@@ -71,6 +72,13 @@ function OpponentFactionOverview({ overview }) {
   );
 }
 
+function formatFactionCounts(factions) {
+  if (!factions?.length) return "Unknown faction";
+  return factions
+    .map((faction) => `${faction.name}${faction.games > 1 ? ` (${faction.games})` : ""}`)
+    .join(", ");
+}
+
 function FactionBadge({ faction }) {
   return (
     <span className="faction-badge" title={faction.name}>
@@ -87,7 +95,7 @@ function BulkGameTable({ games }) {
           <tr>
             <th>Replay</th>
             <th>Players</th>
-            <th>Factions</th>
+            <th>Player factions</th>
             <th>Favored</th>
             <th>Dice</th>
             <th>Combats</th>
@@ -102,7 +110,11 @@ function BulkGameTable({ games }) {
                 <span>{game.events} events</span>
               </td>
               <td>{game.players.map((player) => player.name).join(" vs ")}</td>
-              <td>{game.factions?.map((faction) => faction.name).join(" vs ")}</td>
+              <td>
+                {game.players
+                  .map((player, index) => `${player.name}: ${game.factions?.[index]?.name ?? "Unknown faction"}`)
+                  .join(" vs ")}
+              </td>
               <td>
                 {game.favor ? (
                   <>
