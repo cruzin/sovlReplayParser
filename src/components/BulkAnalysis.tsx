@@ -1,6 +1,5 @@
-import { BarChart3, Crosshair, Dice5, Files, Swords, Trophy, Users, WandSparkles } from "lucide-react";
-import { BulkRerolls } from "./EffectsAndRerolls";
-import { formatNumber, formatPValue } from "./format";
+import { BarChart3, Crosshair, Dice5, Files, Shield, Swords, Trophy, Users } from "lucide-react";
+import { formatNumber, formatPercent, formatPValue } from "./format";
 import { Metric, Panel, PanelHeading } from "./Panel";
 import { PlayerLuck } from "./PlayerLuck";
 
@@ -25,8 +24,8 @@ export function BulkAnalysis({ analysis }) {
             latterHalf={analysis.latterHalfLuck}
           />
         </Panel>
-        <Panel title="Bulk Rerolls" icon={<WandSparkles />}>
-          <BulkRerolls rerolls={analysis.rerolls} totals={analysis.totals} />
+        <Panel title="Opponent Faction Overview" icon={<Shield />}>
+          <OpponentFactionOverview overview={analysis.opponentFactions} />
         </Panel>
       </section>
 
@@ -38,6 +37,48 @@ export function BulkAnalysis({ analysis }) {
   );
 }
 
+function OpponentFactionOverview({ overview }) {
+  if (!overview.length) return <p className="empty">No opponent factions found in this batch.</p>;
+  return (
+    <div className="opponent-faction-overview">
+      {overview.map((player) => (
+        <div className="opponent-player-card" key={player.playerName}>
+          <div className="opponent-player-heading">
+            <strong>{player.playerName}</strong>
+            <span>{player.games} game{player.games === 1 ? "" : "s"}</span>
+          </div>
+          <div className="opponent-faction-list">
+            {player.factions.map((faction) => (
+              <div className="opponent-faction-row" key={faction.id}>
+                <FactionBadge faction={faction} />
+                <div className="opponent-faction-detail">
+                  <div>
+                    <strong>{faction.name}</strong>
+                    <span>
+                      {faction.games}/{player.games} games - {formatPercent(faction.percentage)}
+                    </span>
+                  </div>
+                  <div className="opponent-faction-bar" aria-label={`${faction.name} ${formatPercent(faction.percentage)}`}>
+                    <span style={{ width: `${Math.round(faction.percentage * 100)}%` }} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function FactionBadge({ faction }) {
+  return (
+    <span className="faction-badge" title={faction.name}>
+      {faction.iconUrl ? <img src={faction.iconUrl} alt="" /> : faction.initials}
+    </span>
+  );
+}
+
 function BulkGameTable({ games }) {
   return (
     <div className="table-wrap">
@@ -46,6 +87,7 @@ function BulkGameTable({ games }) {
           <tr>
             <th>Replay</th>
             <th>Players</th>
+            <th>Factions</th>
             <th>Favored</th>
             <th>Dice</th>
             <th>Combats</th>
@@ -60,6 +102,7 @@ function BulkGameTable({ games }) {
                 <span>{game.events} events</span>
               </td>
               <td>{game.players.map((player) => player.name).join(" vs ")}</td>
+              <td>{game.factions?.map((faction) => faction.name).join(" vs ")}</td>
               <td>
                 {game.favor ? (
                   <>
