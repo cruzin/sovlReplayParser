@@ -275,7 +275,7 @@ export function DisciplineTable({ tests }) {
         <tbody>
           {tests.map((test) => (
             <tr key={test.id}>
-              <td>{test.unit.name}</td>
+              <td>{test.unit.name}{test.isRally && " (rally)"}</td>
               <td>{test.crumble ? `D3: ${test.rollTotal}` : test.rollTotal}</td>
               <td>{test.crumble ? "Crumble" : test.target}</td>
               <td>{test.crumble ? "n/a" : formatPercent(test.probability)}</td>

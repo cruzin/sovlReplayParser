@@ -2,10 +2,26 @@ import { BarChart3, Crosshair, Dice5, Files, Shield, Swords, Trophy, Users } fro
 import { formatNumber, formatPercent, formatPValue } from "./format";
 import { Metric, Panel, PanelHeading } from "./Panel";
 import { PlayerLuck } from "./PlayerLuck";
+import { OpponentFactionChart } from "./OpponentFactionChart";
 
 export function BulkAnalysis({ analysis }) {
+  const mostPlayed = [...analysis.opponentFactions].sort((a, b) => b.games - a.games || a.playerName.localeCompare(b.playerName))[0];
   return (
     <>
+      <Panel title="Opponent Faction Overview" icon={<Shield />}>
+        <OpponentFactionOverview overview={mostPlayed ? [mostPlayed] : []} />
+      </Panel>
+
+      <Panel title="Opponent Player Overview" icon={<Users />}>
+        <OpponentPlayerOverview overview={analysis.opponentPlayers} />
+      </Panel>
+
+      {analysis.opponentFactions.filter((player) => player.games >= 20).map((player) => (
+        <Panel key={player.playerName} title={`${player.playerName}'s Opponent Factions`} icon={<BarChart3 />}>
+          <OpponentFactionChart player={player} />
+        </Panel>
+      ))}
+
       <section className="metric-grid">
         <Metric icon={<Files />} label="Games" value={analysis.totals.games} />
         <Metric icon={<Users />} label="Players" value={analysis.players.length} />
@@ -15,7 +31,6 @@ export function BulkAnalysis({ analysis }) {
         <Metric icon={<Trophy />} label="Unlikely fights" value={analysis.totals.flaggedFights} />
       </section>
 
-      <section className="two-column">
         <Panel title="Aggregate Player Luck" icon={<BarChart3 />}>
           <PlayerLuck
             players={analysis.players}
@@ -24,10 +39,7 @@ export function BulkAnalysis({ analysis }) {
             latterHalf={analysis.latterHalfLuck}
           />
         </Panel>
-        <Panel title="Opponent Faction Overview" icon={<Shield />}>
-          <OpponentFactionOverview overview={analysis.opponentFactions} />
-        </Panel>
-      </section>
+
 
       <section className="panel">
         <PanelHeading icon={<Files />} title="Games In Batch" />
@@ -41,6 +53,7 @@ function OpponentFactionOverview({ overview }) {
   if (!overview.length) return <p className="empty">No opponent factions found in this batch.</p>;
   return (
     <div className="opponent-faction-overview">
+      <MatchupNote />
       {overview.map((player) => (
         <div className="opponent-player-card" key={player.playerName}>
           <div className="opponent-player-heading">
@@ -59,6 +72,11 @@ function OpponentFactionOverview({ overview }) {
                       {faction.games}/{player.games} games - {formatPercent(faction.percentage)}
                     </span>
                   </div>
+                  <p className="opponent-own-factions">
+                    Win rate {matchupPercent(faction.winRate)} ({faction.wins}W / {faction.losses}L / {faction.draws}D; {faction.resultGames} recorded results)
+                    {` · Avg score difference ${signedAverage(faction.averageScoreDifference)}`}
+                    {` · Avg objective points ${matchupAverage(faction.averageObjectivePoints)} / ${matchupAverage(faction.averageOpponentObjectivePoints)} (you / opponent)`}
+                  </p>
                   <div className="opponent-faction-bar" aria-label={`${faction.name} ${formatPercent(faction.percentage)}`}>
                     <span style={{ width: `${Math.round(faction.percentage * 100)}%` }} />
                   </div>
@@ -70,6 +88,43 @@ function OpponentFactionOverview({ overview }) {
       ))}
     </div>
   );
+}
+
+function matchupAverage(value) {
+  return value == null ? "n/a" : formatNumber(value, 1);
+}
+
+function matchupPercent(value) {
+  return value == null ? "n/a" : formatPercent(value);
+}
+
+function signedAverage(value) {
+  return value == null ? "n/a" : `${value > 0 ? "+" : ""}${formatNumber(value, 1)}`;
+}
+
+function MatchupNote() {
+  return <p className="opponent-own-factions">Win rates use recorded outcomes; draws count as non-wins. Score differences are your score minus your opponent's. Objective averages show recorded objective points per game. Missing data is excluded from averages.</p>;
+}
+
+function OpponentPlayerOverview({ overview }) {
+  const players = overview.filter((player) => player.opponents.length);
+  if (!players.length) return <p className="empty">No repeated opponents in this batch. Opponents need at least two games to appear.</p>;
+  return <div className="opponent-faction-overview">
+    <MatchupNote />
+    <p className="opponent-own-factions">At least two games per opponent. Lowest win rate first; opponents without recorded results appear last.</p>
+    {players.map((player) => <div className="opponent-player-card" key={player.playerName}>
+      <div className="opponent-player-heading"><strong>{player.playerName}'s opponents</strong></div>
+      <div className="table-wrap compact"><table>
+        <thead><tr><th>Opponent</th><th>Games</th><th>Win rate</th><th>W / L / D</th><th>Avg score difference</th><th>Avg objective points (you / opponent)</th></tr></thead>
+        <tbody>{player.opponents.map((opponent) => <tr key={opponent.opponentName}>
+          <td>{opponent.opponentName}</td><td>{opponent.games}<span>{opponent.resultGames} recorded results</span></td>
+          <td>{matchupPercent(opponent.winRate)}</td><td>{opponent.wins} / {opponent.losses} / {opponent.draws}</td>
+          <td>{signedAverage(opponent.averageScoreDifference)}</td>
+          <td>{matchupAverage(opponent.averageObjectivePoints)} / {matchupAverage(opponent.averageOpponentObjectivePoints)}</td>
+        </tr>)}</tbody>
+      </table></div>
+    </div>)}
+  </div>;
 }
 
 function formatFactionCounts(factions) {

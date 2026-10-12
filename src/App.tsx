@@ -20,6 +20,7 @@ import { EffectsAndRerolls } from "./components/EffectsAndRerolls";
 import { SpellImpact, SwingEvents, UnitFate } from "./components/InsightPanels";
 import { Metric, Panel, PanelHeading } from "./components/Panel";
 import { PlayerLuck } from "./components/PlayerLuck";
+import { RecordedReplay } from "./components/RecordedReplay";
 import {
   CombatTable,
   DisciplineTable,
@@ -77,7 +78,7 @@ export function App() {
     setError("");
     setSelectedSample(sample.file);
     try {
-      const response = await fetch(`${import.meta.env.BASE_URL}samples/${sample.file}`);
+      const response = await fetch(`${import.meta.env.BASE_URL}samples/${encodeURIComponent(sample.file)}`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const text = await response.text();
       setAnalysis(analyzeReplay(text, sample.name));
@@ -197,6 +198,11 @@ export function App() {
 function SingleReplayAnalysis({ analysis }) {
   return (
     <>
+      {analysis.recordedData.formatVersion && (
+        <Panel title="Recorded Match Data" icon={<Trophy />}>
+          <RecordedReplay data={analysis.recordedData} players={analysis.players} />
+        </Panel>
+      )}
       <section className="metric-grid">
         <Metric icon={<Users />} label="Units" value={analysis.units.length} />
         <Metric icon={<Swords />} label="Combats" value={analysis.combats.length} />

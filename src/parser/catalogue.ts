@@ -1,10 +1,27 @@
-import { splitIdentifier, values } from "./utils";
+import { splitIdentifier } from "./utils";
 
 type FactionSummary = {
   id: string;
   name: string;
   initials: string;
   iconUrl: string | null;
+};
+
+// From cruzin/sovlTools, page branch, assets/factions.json.
+const factionIcons = {
+  AbyssalDemons: "AbyssalDemonPlaceHolder.png",
+  AbyssalLegions: "AbyssalChampion.png",
+  DarkbornElves: "DarkbornPriestess.png",
+  DeadNations: "VampireKnight.png",
+  DeepwoodGuardians: "TreantElder.png",
+  DwarfHolds: "DwarfForeman.png",
+  ElvenConclaves: "ConclaveElfNoble.png",
+  EmpiresOfMen: "ImperialCaptain.png",
+  GoatmenRaiders: "MinotaurLord.png",
+  GreenskinTribes: "GoblinShaman.png",
+  KnightsOfAvalon: "Maiden.png",
+  RatkinClans: "RatkinWarlock.png",
+  ReptilianKingdoms: "NewtPriest.png",
 };
 
 const factionById = new Map(
@@ -25,56 +42,25 @@ const factionById = new Map(
   ].map(([id, name]) => [id, toFactionSummary(id, name)]),
 );
 
-const factionTypeFallback = new Map([
+const factionTypeByCode = new Map([
   [1, "EmpiresOfMen"],
+  [2, "GreenskinTribes"],
+  [3, "DwarfHolds"],
+  [4, "ElvenConclaves"],
   [5, "DeadNations"],
+  [6, "GoatmenRaiders"],
+  [7, "AbyssalLegions"],
+  [8, "ReptilianKingdoms"],
   [9, "RatkinClans"],
   [10, "DeepwoodGuardians"],
+  [11, "DarkbornElves"],
+  [12, "AbyssalDemons"],
   [13, "KnightsOfAvalon"],
 ]);
 
-const unitIdHints = [
-  { factionId: "RatkinClans", patterns: [/^ratkin/i, /^doomBell$/i] },
-  { factionId: "DeepwoodGuardians", patterns: [/^deepwood/i, /^dryads?$/i, /^treant/i] },
-  { factionId: "EmpiresOfMen", patterns: [/^imperial/i, /^footKnights$/i, /^gryphon$/i] },
-  { factionId: "KnightsOfAvalon", patterns: [/^unicorn$/i, /^hippogryph$/i, /^peasants?$/i] },
-  { factionId: "DeadNations", patterns: [/^skeleton/i, /^dreadKnights$/i, /^zombie/i, /^wight/i, /^vampire/i] },
-  { factionId: "DarkbornElves", patterns: [/^darkborn/i, /^darkPegasus$/i] },
-  { factionId: "DwarfHolds", patterns: [/^dwarf/i, /^dwarven/i, /^rune/i, /^slayer/i] },
-  { factionId: "ElvenConclaves", patterns: [/^elven/i, /^highborn/i, /^phoenix/i, /^silver/i] },
-  { factionId: "GoatmenRaiders", patterns: [/^goat/i, /^minotaur/i, /^centaur/i, /^beast/i] },
-  { factionId: "GreenskinTribes", patterns: [/^orc/i, /^goblin/i, /^troll/i, /^wyvern/i] },
-  { factionId: "ReptilianKingdoms", patterns: [/^reptilian/i, /^saur/i, /^skink/i, /^krox/i, /^steg/i] },
-  { factionId: "AbyssalDemons", patterns: [/^demon/i, /^demonic/i, /^hell/i] },
-  { factionId: "AbyssalLegions", patterns: [/^abyssal/i, /^chosen/i, /^chaos/i] },
-];
-
-export function inferFactionFromList(list): FactionSummary {
-  const counts = new Map<string, number>();
-  for (const unitId of extractListUnitIds(list)) {
-    const factionId = inferFactionIdFromUnitId(unitId);
-    if (!factionId) continue;
-    counts.set(factionId, (counts.get(factionId) ?? 0) + 1);
-  }
-
-  const inferredId = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
-  if (inferredId) return factionById.get(inferredId) ?? unknownFaction();
-
-  const fallbackId = factionTypeFallback.get(Number(list?.factionType));
-  if (fallbackId) return factionById.get(fallbackId) ?? unknownFaction();
-
-  return unknownFaction();
-}
-
-function inferFactionIdFromUnitId(unitId) {
-  return unitIdHints.find((hint) => hint.patterns.some((pattern) => pattern.test(String(unitId || ""))))?.factionId ?? null;
-}
-
-function extractListUnitIds(list) {
-  const sections = [list?.characters, list?.battleLine, ...values(list?.armyListSections)];
-  return sections.flatMap((section) =>
-    values(section?.entries).flatMap((entry) => [entry?.unitID, entry?.character?.unitID].filter(Boolean)),
-  );
+export function factionFromList(list): FactionSummary {
+  const recordedId = factionTypeByCode.get(Number(list?.factionType));
+  return recordedId ? factionById.get(recordedId) ?? unknownFaction() : unknownFaction();
 }
 
 function unknownFaction() {
@@ -86,7 +72,7 @@ function toFactionSummary(id, name) {
     id,
     name,
     initials: initialsForName(name),
-    iconUrl: null,
+    iconUrl: factionIcons[id] ? `${import.meta.env.BASE_URL}faction-icons/${factionIcons[id]}` : null,
   };
 }
 
