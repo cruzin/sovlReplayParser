@@ -9,7 +9,9 @@ import {
   twoTailedNormalP,
 } from "./probability";
 import { analyzeRollArray, mergeRerollTypes, normalizeRoll, summarizeRerolls, summarizeRollRerolls } from "./rerolls";
-import { inferFactionFromList } from "./catalogue";
+import { factionFromList } from "./catalogue";
+import { normalizeReplay, summarizeRecordedData } from "./replayFormat";
+import { summarizeMatchupResults } from "./matchups";
 import {
   comparePlayerLuck,
   summarizeSpellImpact,
@@ -21,14 +23,14 @@ import {
 import { clamp, formatPercent, shortType, splitIdentifier, stripUnityRichText, sum, titleCase, unknownUnit, values } from "./utils";
 
 export function analyzeReplay(text, title = "Uploaded replay") {
-  const replay = JSON.parse(text);
+  const replay = normalizeReplay(JSON.parse(text));
   const events = values(replay.events);
   const players = [
     makePlayer(0, replay.player0Name || "Player 0"),
     makePlayer(1, replay.player1Name || "Player 1"),
   ];
-  players[0].faction = inferFactionFromList(replay.player0List);
-  players[1].faction = inferFactionFromList(replay.player1List);
+  players[0].faction = factionFromList(replay.player0List);
+  players[1].faction = factionFromList(replay.player1List);
   const units = [
     ...extractUnits(replay.player0List, players[0]),
     ...extractUnits(replay.player1List, players[1]),
@@ -63,7 +65,7 @@ export function analyzeReplay(text, title = "Uploaded replay") {
       rollGroups.push(...ranged.rollGroups);
     }
 
-    if (type === "UnitBreakTestEvent") {
+    if (type === "UnitBreakTestEvent" || type === "UnitRallyTestEvent") {
       const test = analyzeDiscipline(event, eventIndex, unitById);
       disciplineTests.push(test);
       rollGroups.push(test.rollGroup);
@@ -86,6 +88,7 @@ export function analyzeReplay(text, title = "Uploaded replay") {
 
   return {
     title,
+    recordedData: summarizeRecordedData(replay, players, unitById),
     players,
     favor,
     firstHalfLuck,
@@ -185,6 +188,7 @@ export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis")
     events: analysis.events.length,
   }));
 
+  const matchupResults = summarizeMatchupResults(analyses);
   return {
     title,
     mode: "batch",
@@ -195,7 +199,14 @@ export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis")
     latterHalfLuck,
     totals,
     rerolls,
-    opponentFactions: summarizeOpponentFactions(analyses),
+    opponentFactions: summarizeOpponentFactions(analyses).map((player) => ({
+      ...player,
+      factions: player.factions.map((faction) => ({
+        ...faction,
+        ...matchupResults.find((result) => normalizePlayerKey(result.playerName) === normalizePlayerKey(player.playerName))?.factions.find((result) => result.id === faction.id),
+      })),
+    })),
+    opponentPlayers: matchupResults,
     games,
   };
 }
@@ -449,11 +460,11 @@ function analyzeCombat(event, eventIndex, unitById, turn) {
   const unitA = unitById.get(event.uID1) || unknownUnit(event.uID1);
   const unitB = unitById.get(event.uID2) || unknownUnit(event.uID2);
   const stepA = analyzeCombatStep(event.stepOne, unitA, unitB, eventIndex, "A");
-  const stepB = analyzeCombatStep(event.stepTwo, unitB, unitA, eventIndex, "B");
+  const stepB = analyzeCombatStep(event.hasSecondStep === false ? null : event.stepTwo, unitB, unitA, eventIndex, "B");
   const expectedA = stepA.expectedWounds;
   const expectedB = stepB.expectedWounds;
   const actualA = Number(event.stepOne?.woundsCaused || 0);
-  const actualB = Number(event.stepTwo?.woundsCaused || 0);
+  const actualB = event.hasSecondStep === false ? 0 : Number(event.stepTwo?.woundsCaused || 0);
   const winChanceA = compareDistributions(stepA.woundDistribution, stepB.woundDistribution);
   const expectedMarginA = expectedA - expectedB;
   const actualMarginA = actualA - actualB;
@@ -642,6 +653,7 @@ function analyzeRangedAttack(event, eventIndex, type, unitById) {
 function analyzeDiscipline(event, eventIndex, unitById) {
   const unit = unitById.get(event.unitID) || unknownUnit(event.unitID);
   const test = event.test || {};
+  const isRally = shortType(event.$type) === "UnitRallyTestEvent";
   const rawRolls = values(test.rolls);
   const crumble = Boolean(test.crumble || rawRolls.some((roll) => roll?.isD3));
   const target = crumble ? null : clamp(Number(test.unitDiscipline || 0) - Number(test.penalty || 0), 0, Number(test.unitDiscipline || 0));
@@ -662,7 +674,7 @@ function analyzeDiscipline(event, eventIndex, unitById) {
   const rollGroup = {
     id: `discipline-${eventIndex}`,
     eventIndex,
-    label: `${unit.name} discipline test`,
+    label: `${unit.name} ${isRally ? "rally" : "discipline"} test`,
     playerId: unit.playerId,
     playerName: unit.playerName,
     unitName: unit.name,
@@ -679,6 +691,7 @@ function analyzeDiscipline(event, eventIndex, unitById) {
   return {
     id: `discipline-${eventIndex}`,
     unit,
+    isRally,
     rollTotal: crumble ? sum(displayRolls.map((roll) => roll.result)) : rollTotal,
     displayRolls,
     target,

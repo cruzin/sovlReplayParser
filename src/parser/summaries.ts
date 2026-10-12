@@ -328,6 +328,11 @@ export function summarizeUnitFates(units, events, combats, rangedAttacks, discip
   for (const test of disciplineTests) {
     const fate = fates.get(test.unit.globalId);
     if (!fate) continue;
+    if (test.isRally) {
+      if (test.success) fate.rallies += 1;
+      fate.notes.push(`${test.success ? "Passed" : "Failed"} rally ${test.rollTotal}/${test.target}`);
+      continue;
+    }
     if (test.crumble) {
       fate.crumbleLosses += test.rollTotal;
       fate.woundsTaken += test.rollTotal;
@@ -347,7 +352,7 @@ export function summarizeUnitFates(units, events, combats, rangedAttacks, discip
     const type = shortType(event?.$type);
     if (type === "UnitDestroyedEvent") {
       fate.destroyed = true;
-      fate.destroyedReason = event.reason || "destroyed";
+      fate.destroyedReason = event.reason ?? "destroyed";
       fate.estimatedRemaining = 0;
       fate.notes.push(`Destroyed #${eventIndex}: ${fate.destroyedReason}`);
     }
@@ -359,6 +364,10 @@ export function summarizeUnitFates(units, events, combats, rangedAttacks, discip
       const amount = Number(event.healAmount || event.restoreModels || 0);
       fate.heals += amount;
       fate.notes.push(`Healed ${amount}`);
+    }
+    if (event.t === "self_damage") {
+      fate.woundsTaken += Number(event.wounds || 0);
+      fate.notes.push(`Self damage ${event.wounds || 0}`);
     }
   });
 

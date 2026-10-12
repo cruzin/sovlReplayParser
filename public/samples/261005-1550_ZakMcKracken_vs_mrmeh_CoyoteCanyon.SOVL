@@ -1,0 +1,6430 @@
+{
+  "formatVersion": 2,
+  "gameVersion": "1.33.0-ci.48",
+  "balanceVersion": "1.32.0-b1",
+  "recordedUtc": "2026-10-05T13:50:17.9387257Z",
+  "header": {
+    "player0Name": "ZakMcKracken",
+    "player1Name": "mr meh",
+    "player0List": {
+      "listName": "TO ISENGARD",
+      "id": "34e9a880-fd2d-4522-93a2-885fe10a8466",
+      "factionType": 10,
+      "modFactionId": "",
+      "armySize": 4,
+      "armyAppearance": {
+        "primary": 15,
+        "secondary": 11,
+        "icon": 36
+      },
+      "armyIcon": 0,
+      "characters": {
+        "sectionName": "Commanders",
+        "entries": [
+          {
+            "count": 1,
+            "width": 3,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "deepwoodDruid",
+              "flavourName": "Toktuthrîs",
+              "faction": 10,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [
+                "regrowth",
+                "arcaneWeb"
+              ],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "Elysia",
+              "UnitSeed": 1766
+            },
+            "hasCharacter": true,
+            "deadCharacter": false,
+            "unitID": "gryphonElf",
+            "flavourName": "Flapîwîng",
+            "faction": 10,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 0,
+              "inverted": false
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 8863
+          },
+          {
+            "count": 1,
+            "width": 1,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "",
+              "flavourName": "",
+              "faction": 0,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 6964
+            },
+            "hasCharacter": false,
+            "deadCharacter": false,
+            "unitID": "treantElder",
+            "flavourName": "Olandgrai",
+            "faction": 10,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 0,
+              "inverted": true
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 8725
+          }
+        ]
+      },
+      "battleLine": {
+        "sectionName": "Battle Line",
+        "entries": [
+          {
+            "count": 13,
+            "width": 7,
+            "customWidthSet": true,
+            "character": {
+              "unitID": "",
+              "flavourName": "",
+              "faction": 0,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 2768
+            },
+            "hasCharacter": false,
+            "deadCharacter": false,
+            "unitID": "deepwoodGuard",
+            "flavourName": "Blontendon",
+            "faction": 10,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 2,
+              "inverted": false
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 5393
+          },
+          {
+            "count": 12,
+            "width": 6,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "",
+              "flavourName": "",
+              "faction": 0,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 3462
+            },
+            "hasCharacter": false,
+            "deadCharacter": false,
+            "unitID": "deepwoodGuard",
+            "flavourName": "Droptispirs",
+            "faction": 10,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 2,
+              "inverted": true
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 2590
+          }
+        ]
+      },
+      "armyListSections": [
+        {
+          "sectionName": "Ranged Support",
+          "entries": []
+        },
+        {
+          "sectionName": "Fast Attack",
+          "entries": [
+            {
+              "count": 1,
+              "width": 1,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 6641
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "deepwoodChariot",
+              "flavourName": "Nôbrêksondis",
+              "faction": 10,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 1,
+                "inverted": true
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 7741
+            },
+            {
+              "count": 1,
+              "width": 1,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 6381
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "deepwoodChariot",
+              "flavourName": "Krashtutri",
+              "faction": 10,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 1,
+                "inverted": true
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 1832
+            }
+          ]
+        },
+        {
+          "sectionName": "Forest Guardians",
+          "entries": [
+            {
+              "count": 1,
+              "width": 1,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 4258
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "treant",
+              "flavourName": "Grînanto",
+              "faction": 10,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 7,
+                "inverted": true
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 7030
+            }
+          ]
+        }
+      ]
+    },
+    "player1List": {
+      "listName": "Isolde's Sentinels",
+      "id": "default-BorderPatrol",
+      "factionType": 4,
+      "modFactionId": "",
+      "armySize": 4,
+      "armyAppearance": {
+        "primary": 17,
+        "secondary": 37,
+        "icon": 36
+      },
+      "armyIcon": 0,
+      "characters": {
+        "sectionName": "Commanders",
+        "entries": [
+          {
+            "count": 14,
+            "width": 5,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "elfNoble",
+              "flavourName": "Isolde Frostbloom",
+              "faction": 4,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [
+                "ccwshield"
+              ],
+              "magicItems": [
+                "vitality"
+              ],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "Isolde",
+              "UnitSeed": 6100
+            },
+            "hasCharacter": true,
+            "deadCharacter": false,
+            "unitID": "elfSpears",
+            "flavourName": "Isolde's Shields",
+            "faction": 4,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 3,
+              "inverted": false
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 9752
+          }
+        ]
+      },
+      "battleLine": {
+        "sectionName": "Battle Line",
+        "entries": [
+          {
+            "count": 15,
+            "width": 5,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "",
+              "flavourName": "",
+              "faction": 0,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 3019
+            },
+            "hasCharacter": false,
+            "deadCharacter": false,
+            "unitID": "weaponMasters",
+            "flavourName": "The Silverwind Blades",
+            "faction": 4,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 4,
+              "inverted": false
+            },
+            "propertySelections": [
+              "greatweapon"
+            ],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 7167
+          },
+          {
+            "count": 15,
+            "width": 5,
+            "customWidthSet": false,
+            "character": {
+              "unitID": "",
+              "flavourName": "",
+              "faction": 0,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 0,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 6501
+            },
+            "hasCharacter": false,
+            "deadCharacter": false,
+            "unitID": "elfSpears",
+            "flavourName": "Silverwind Defenders",
+            "faction": 4,
+            "modFactionId": "",
+            "pattern": {
+              "pattern": 3,
+              "inverted": false
+            },
+            "propertySelections": [],
+            "magicItems": [],
+            "spells": [],
+            "campaignUnitProgress": {
+              "maxUnitSize": 0,
+              "xp": 0,
+              "totalKills": 0,
+              "totalLosses": 0,
+              "level": 0,
+              "replenishmentBonus": 0.0,
+              "passiveReplenishmentBonus": 0.0,
+              "levelUpBonuses": [],
+              "unlockedPropertyIDs": [],
+              "incomeMods": [],
+              "recruiterBonusLevels": 0,
+              "lootBonus": 0,
+              "unlockedRangedAttack": "",
+              "unlockedWeaponSet": "",
+              "leftOverWounds": 0,
+              "destroyed": false
+            },
+            "altSkin": "",
+            "firstName": "",
+            "UnitSeed": 6039
+          }
+        ]
+      },
+      "armyListSections": [
+        {
+          "sectionName": "Ranged Support",
+          "entries": [
+            {
+              "count": 1,
+              "width": 5,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 8039
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "elfBoltThrower",
+              "flavourName": "Goldleaf Sentinels",
+              "faction": 4,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 8,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 8999
+            }
+          ]
+        },
+        {
+          "sectionName": "Fast Attack",
+          "entries": [
+            {
+              "count": 5,
+              "width": 5,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 7854
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "elfReavers",
+              "flavourName": "Silverleaf Guardians",
+              "faction": 4,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 7,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 1943
+            },
+            {
+              "count": 1,
+              "width": 5,
+              "customWidthSet": false,
+              "character": {
+                "unitID": "",
+                "flavourName": "",
+                "faction": 0,
+                "modFactionId": "",
+                "pattern": {
+                  "pattern": 0,
+                  "inverted": false
+                },
+                "propertySelections": [],
+                "magicItems": [],
+                "spells": [],
+                "campaignUnitProgress": {
+                  "maxUnitSize": 0,
+                  "xp": 0,
+                  "totalKills": 0,
+                  "totalLosses": 0,
+                  "level": 0,
+                  "replenishmentBonus": 0.0,
+                  "passiveReplenishmentBonus": 0.0,
+                  "levelUpBonuses": [],
+                  "unlockedPropertyIDs": [],
+                  "incomeMods": [],
+                  "recruiterBonusLevels": 0,
+                  "lootBonus": 0,
+                  "unlockedRangedAttack": "",
+                  "unlockedWeaponSet": "",
+                  "leftOverWounds": 0,
+                  "destroyed": false
+                },
+                "altSkin": "",
+                "firstName": "",
+                "UnitSeed": 9668
+              },
+              "hasCharacter": false,
+              "deadCharacter": false,
+              "unitID": "elfChariot",
+              "flavourName": "Moonshadow Guard",
+              "faction": 4,
+              "modFactionId": "",
+              "pattern": {
+                "pattern": 7,
+                "inverted": false
+              },
+              "propertySelections": [],
+              "magicItems": [],
+              "spells": [],
+              "campaignUnitProgress": {
+                "maxUnitSize": 0,
+                "xp": 0,
+                "totalKills": 0,
+                "totalLosses": 0,
+                "level": 0,
+                "replenishmentBonus": 0.0,
+                "passiveReplenishmentBonus": 0.0,
+                "levelUpBonuses": [],
+                "unlockedPropertyIDs": [],
+                "incomeMods": [],
+                "recruiterBonusLevels": 0,
+                "lootBonus": 0,
+                "unlockedRangedAttack": "",
+                "unlockedWeaponSet": "",
+                "leftOverWounds": 0,
+                "destroyed": false
+              },
+              "altSkin": "",
+              "firstName": "",
+              "UnitSeed": 6844
+            }
+          ]
+        }
+      ]
+    },
+    "mapID": 13,
+    "gameMode": 1,
+    "scenario": 1,
+    "iGoYouGo": false,
+    "iGoYouGoCounterCharges": false,
+    "playerWithFlippedIcons": 1,
+    "campaignEnemy": "",
+    "isCampaign": false,
+    "firstActingPlayer": 0
+  },
+  "startingPositions": [
+    {
+      "unitID": 0,
+      "position": [
+        4.35185432,
+        -15.416667
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 1,
+      "position": [
+        -8.194445,
+        -13.25
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 2,
+      "position": [
+        4.399998,
+        -13.1
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 3,
+      "position": [
+        -3.99999833,
+        -13.1
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 4,
+      "position": [
+        15.8333359,
+        -16.8055573
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 5,
+      "position": [
+        18.6111145,
+        -15.50926
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 6,
+      "position": [
+        0.0,
+        -13.25
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "unitID": 7,
+      "position": [
+        3.09999919,
+        13.5
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "unitID": 8,
+      "position": [
+        -3.79999852,
+        13.5
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "unitID": 9,
+      "position": [
+        7.699995,
+        13.5
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "unitID": 10,
+      "position": [
+        -7.39999533,
+        13.3
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "unitID": 11,
+      "position": [
+        -14.875,
+        13.3
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "unitID": 12,
+      "position": [
+        14.875,
+        14.3
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    }
+  ],
+  "events": [
+    {
+      "t": "objectives_set",
+      "objectiveSet": 1
+    },
+    {
+      "t": "turn",
+      "turn": 1
+    },
+    {
+      "t": "phase",
+      "phase": 1
+    },
+    {
+      "t": "move",
+      "unitID": 7,
+      "kind": 0,
+      "steps": [
+        [
+          8.389503,
+          13.45
+        ],
+        [
+          8.389503,
+          13.45
+        ],
+        [
+          6.04541349,
+          6.642268
+        ],
+        [
+          6.04541349,
+          6.642268
+        ],
+        [
+          6.04541349,
+          6.642268
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9961947,
+        -0.08715578
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 6,
+      "kind": 0,
+      "steps": [
+        [
+          0.0,
+          -13.25
+        ],
+        [
+          0.0,
+          -13.25
+        ],
+        [
+          -2.22465587,
+          -2.78381634
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.104528457,
+        0.9945219
+      ]
+    },
+    {
+      "t": "objective_state",
+      "marker": 0,
+      "state": 2
+    },
+    {
+      "t": "move",
+      "unitID": 11,
+      "kind": 0,
+      "steps": [
+        [
+          -11.0171585,
+          14.8466206
+        ],
+        [
+          -11.0171585,
+          7.14662552
+        ],
+        [
+          -11.0171585,
+          7.14662552
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9636305,
+        -0.267238319
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 11,
+      "effectID": "shortbow",
+      "isCharacter": false
+    },
+    {
+      "t": "ranged",
+      "unitID": 11,
+      "targetUnitID": 6,
+      "kind": 0,
+      "unitType": 1,
+      "specialType": 0,
+      "rollType": 2,
+      "shooterIsCharacter": false,
+      "toHit": 5,
+      "toSave": 2,
+      "wounds": 1,
+      "toHitRolls": [
+        {
+          "result": 2,
+          "success": false,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 3,
+          "success": false,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 6,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "saveRolls": [
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 1,
+          "success": false,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 3,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "attackText": "Elf Reavers open fire on Treant.",
+      "preSaveText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>"
+    },
+    {
+      "t": "move",
+      "unitID": 11,
+      "kind": 0,
+      "steps": [
+        [
+          -11.0171585,
+          7.14662552
+        ],
+        [
+          -11.0171585,
+          7.14662552
+        ],
+        [
+          -10.5227318,
+          5.62493467
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.987688363,
+        -0.1564344
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 3,
+      "kind": 0,
+      "steps": [
+        [
+          -3.99999833,
+          -13.1
+        ],
+        [
+          -3.99999833,
+          -13.1
+        ],
+        [
+          -6.503035,
+          -5.396448
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.1564345,
+        0.987688363
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 12,
+      "kind": 0,
+      "steps": [
+        [
+          14.6861725,
+          16.78406
+        ],
+        [
+          14.6861725,
+          3.484045
+        ],
+        [
+          14.6861725,
+          3.484045
+        ],
+        [
+          14.6861725,
+          1.08404517
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 5,
+      "kind": 0,
+      "steps": [
+        [
+          18.6111145,
+          -15.50926
+        ],
+        [
+          18.6111145,
+          -15.50926
+        ],
+        [
+          19.5003662,
+          -13.0660591
+        ],
+        [
+          19.5003662,
+          -13.0660591
+        ],
+        [
+          23.8620682,
+          -6.59956932
+        ],
+        [
+          23.8620682,
+          -6.59956932
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.25038,
+        0.9681477
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 5,
+      "effectID": "chariotBows",
+      "isCharacter": false
+    },
+    {
+      "t": "ranged",
+      "unitID": 5,
+      "targetUnitID": 12,
+      "kind": 1,
+      "unitType": 0,
+      "specialType": 11,
+      "rollType": 2,
+      "shooterIsCharacter": false,
+      "toHit": 3,
+      "toSave": 3,
+      "wounds": 1,
+      "toHitRolls": [
+        {
+          "result": 4,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 4,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "saveRolls": [
+        {
+          "result": 6,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 1,
+          "success": false,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "attackText": "Deepwood Chariot fires at Elf Chariot.",
+      "preSaveText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>"
+    },
+    {
+      "t": "move",
+      "unitID": 5,
+      "kind": 0,
+      "steps": [
+        [
+          23.8620682,
+          -6.59956932
+        ],
+        [
+          23.7166252,
+          -6.33718348
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.25038,
+        0.9681477
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 8,
+      "kind": 0,
+      "steps": [
+        [
+          19.5620575,
+          15.4278536
+        ],
+        [
+          19.5620575,
+          7.327859
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 1,
+      "kind": 0,
+      "steps": [
+        [
+          -8.194445,
+          -13.25
+        ],
+        [
+          -8.194445,
+          -13.25
+        ],
+        [
+          -12.36625,
+          -6.306949
+        ],
+        [
+          -12.36625,
+          -6.306949
+        ],
+        [
+          -12.268755,
+          -5.51291227
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.06104848,
+        0.998134851
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 10,
+      "kind": 0,
+      "steps": [
+        [
+          2.932386,
+          13.4258347
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9636305,
+        0.267238319
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 10,
+      "effectID": "boltThrower",
+      "isCharacter": false
+    },
+    {
+      "t": "ranged",
+      "unitID": 10,
+      "targetUnitID": 1,
+      "kind": 1,
+      "unitType": 0,
+      "specialType": 0,
+      "rollType": 2,
+      "shooterIsCharacter": false,
+      "toHit": 3,
+      "toSave": 3,
+      "wounds": 0,
+      "toHitRolls": [
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 4,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 3,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "saveRolls": [
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": true,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 3,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": true,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 4,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": true,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "attackText": "Elf Bolt Thrower open fire on Treant Elder.",
+      "preSaveText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>"
+    },
+    {
+      "t": "move",
+      "unitID": 2,
+      "kind": 0,
+      "steps": [
+        [
+          4.399998,
+          -13.1
+        ],
+        [
+          4.399998,
+          -13.1
+        ],
+        [
+          5.402044,
+          -5.97007465
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.06975647,
+        0.9975641
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 9,
+      "kind": 0,
+      "steps": [
+        [
+          10.0363245,
+          17.1392555
+        ],
+        [
+          10.0363245,
+          17.1392555
+        ],
+        [
+          11.0356522,
+          9.00038052
+        ],
+        [
+          11.0356522,
+          9.00038052
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9996574,
+        -0.026176922
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 4,
+      "kind": 0,
+      "steps": [
+        [
+          15.8333359,
+          -16.8055573
+        ],
+        [
+          15.8333359,
+          -16.8055573
+        ],
+        [
+          13.2131042,
+          -11.1864519
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.2164396,
+        0.976296067
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 4,
+      "effectID": "chariotBows",
+      "isCharacter": false
+    },
+    {
+      "t": "ranged",
+      "unitID": 4,
+      "targetUnitID": 8,
+      "kind": 1,
+      "unitType": 0,
+      "specialType": 11,
+      "rollType": 2,
+      "shooterIsCharacter": false,
+      "toHit": 4,
+      "toSave": 3,
+      "wounds": 0,
+      "toHitRolls": [
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "saveRolls": [
+        {
+          "result": 5,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 4,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "attackText": "Deepwood Chariot fires at Weapon Masters.",
+      "preSaveText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>"
+    },
+    {
+      "t": "move",
+      "unitID": 0,
+      "kind": 0,
+      "steps": [
+        [
+          4.35185432,
+          -15.416667
+        ],
+        [
+          4.35185432,
+          -15.416667
+        ],
+        [
+          -0.9382124,
+          -8.135515
+        ],
+        [
+          -0.9382124,
+          -8.135515
+        ],
+        [
+          -0.3848663,
+          -5.28879738
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.0958457738,
+        0.9953962
+      ]
+    },
+    {
+      "t": "turn",
+      "turn": 2
+    },
+    {
+      "t": "phase",
+      "phase": 0
+    },
+    {
+      "t": "flee_declared",
+      "unitID": 11
+    },
+    {
+      "t": "move",
+      "unitID": 11,
+      "kind": 2,
+      "steps": [
+        [
+          -10.5227318,
+          5.62493467
+        ],
+        [
+          -10.1900005,
+          14.75
+        ],
+        [
+          -10.6900005,
+          15.75
+        ],
+        [
+          -15.2861919,
+          20.3461914
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.3826833,
+        0.923879564
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 1,
+      "kind": 3,
+      "steps": [
+        [
+          -10.580636,
+          5.25557756
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.07767127,
+        0.996979058
+      ]
+    },
+    {
+      "t": "destroyed",
+      "unitID": 11,
+      "reason": 3,
+      "loseAllModels": false
+    },
+    {
+      "t": "move",
+      "unitID": 6,
+      "kind": 1,
+      "steps": [
+        [
+          2.99250937,
+          6.10395861
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.6427876,
+        -0.7660445
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 0,
+      "kind": 1,
+      "steps": [
+        [
+          1.95381379,
+          11.7972164
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.267238349,
+        0.9636305
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 2,
+      "kind": 1,
+      "steps": [
+        [
+          12.7861729,
+          1.08404517
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.707106769,
+        -0.707106769
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 5,
+      "kind": 1,
+      "steps": [
+        [
+          17.7861729,
+          1.08404517
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.707106769,
+        0.707106769
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 1
+    },
+    {
+      "t": "ability_used",
+      "unitID": 0,
+      "effectID": "arcaneWeb",
+      "isCharacter": true
+    },
+    {
+      "t": "spell",
+      "casterUnitID": 0,
+      "casterIsCharacter": true,
+      "effectID": "arcaneWeb",
+      "targets": [
+        9
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 8,
+      "kind": 0,
+      "steps": [
+        [
+          19.5620575,
+          7.327859
+        ],
+        [
+          19.5620575,
+          7.327859
+        ],
+        [
+          20.4998112,
+          5.11864758
+        ],
+        [
+          20.4998112,
+          5.11864758
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9426415,
+        0.333806872
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 4,
+      "kind": 0,
+      "steps": [
+        [
+          13.2131042,
+          -11.1864519
+        ],
+        [
+          13.2131042,
+          -11.1864519
+        ],
+        [
+          6.345248,
+          -5.21631575
+        ],
+        [
+          6.345248,
+          -5.21631575
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.0436194539,
+        0.9990483
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 4,
+      "effectID": "chariotBows",
+      "isCharacter": false
+    },
+    {
+      "t": "ranged",
+      "unitID": 4,
+      "targetUnitID": 9,
+      "kind": 1,
+      "unitType": 0,
+      "specialType": 11,
+      "rollType": 2,
+      "shooterIsCharacter": false,
+      "toHit": 4,
+      "toSave": 3,
+      "wounds": 1,
+      "toHitRolls": [
+        {
+          "result": 6,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 6,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "saveRolls": [
+        {
+          "result": 6,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        },
+        {
+          "result": 2,
+          "success": false,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": false,
+          "doubleWounds": false,
+          "bonus": 0,
+          "rerollTypes": []
+        }
+      ],
+      "attackText": "Deepwood Chariot fires at Elf Spears.",
+      "preSaveText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>"
+    },
+    {
+      "t": "move",
+      "unitID": 3,
+      "kind": 0,
+      "steps": [
+        [
+          -6.503035,
+          -5.396448
+        ],
+        [
+          -6.503035,
+          -5.396448
+        ],
+        [
+          -4.10195637,
+          -2.32320714
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.32556808,
+        0.9455187
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 2
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        6,
+        7
+      ],
+      "characterUnitIDs": [
+        7
+      ],
+      "cameraPosition": [
+        4.51896143,
+        6.37311363,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 7,
+      "unitID2": 6,
+      "isCharacter1": true,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": true,
+              "resultPreReroll": 2,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            }
+          ],
+          "target": 3,
+          "successes": 3,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>5</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": true
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 2,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>4</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 1,
+        "attackingModels": [],
+        "attackerFacing": 1,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": false
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 6,
+      "unitID2": 7,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 1,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 1,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 1,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 1,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 1,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [
+          4,
+          9,
+          14
+        ],
+        "attackerFacing": 1,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": -1,
+      "score": 0
+    },
+    {
+      "t": "move",
+      "unitID": 7,
+      "kind": 4,
+      "steps": [
+        [
+          5.25756741,
+          6.5033493
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.7660445,
+        0.642787635
+      ]
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        0,
+        10
+      ],
+      "characterUnitIDs": [
+        0
+      ],
+      "cameraPosition": [
+        2.4431,
+        12.6115255,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 0,
+      "unitID2": 10,
+      "isCharacter1": true,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 2,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": true
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 4,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 19,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>2</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 2,
+        "attackingModels": [],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": false
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 0,
+      "unitID2": 10,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 2,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 6,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 19,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>2</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 2,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 19,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 4
+    },
+    {
+      "t": "break_test",
+      "unitID": 10,
+      "test": {
+        "rolls": [
+          {
+            "result": 3,
+            "success": false,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 6,
+            "success": false,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 8,
+        "rankBonusModifier": 0,
+        "penalty": 4,
+        "success": false,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": false
+      }
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "destroyed",
+      "unitID": 10,
+      "reason": 2,
+      "loseAllModels": true
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        2,
+        12,
+        5
+      ],
+      "characterUnitIDs": [],
+      "cameraPosition": [
+        15.0861731,
+        1.08404517,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 2,
+      "unitID2": 12,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 6,
+          "rollerID": 0,
+          "unitID": 11,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 3,
+          "successes": 2,
+          "rollerID": 1,
+          "unitID": 21,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 4,
+        "attackingModels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 1,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 1,
+          "rollerID": 1,
+          "unitID": 21,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 11,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 1,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 1,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 5,
+      "unitID2": 12,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 14,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 21,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 3,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 2,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 21,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 14,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 2,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 9
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "objectives_scored",
+      "player": 0,
+      "points": 50
+    },
+    {
+      "t": "turn",
+      "turn": 3
+    },
+    {
+      "t": "phase",
+      "phase": 0
+    },
+    {
+      "t": "flee_declared",
+      "unitID": 5
+    },
+    {
+      "t": "move",
+      "unitID": 4,
+      "kind": 1,
+      "steps": [
+        [
+          5.969526,
+          2.46563721
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.08715579,
+        0.9961947
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 5,
+      "kind": 2,
+      "steps": [
+        [
+          17.7861729,
+          1.08404517
+        ],
+        [
+          8.809999,
+          -7.75
+        ],
+        [
+          8.335144,
+          -12.0236979
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.99846977,
+        0.05530058
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 8,
+      "kind": 3,
+      "steps": [
+        [
+          16.4350224,
+          -1.51954269
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9564973,
+        0.291741043
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 1
+    },
+    {
+      "t": "move",
+      "unitID": 9,
+      "kind": 0,
+      "steps": [
+        [
+          11.0356522,
+          9.00038052
+        ],
+        [
+          11.1350908,
+          7.10298347
+        ],
+        [
+          11.1350908,
+          7.10298347
+        ],
+        [
+          9.75621,
+          5.94596529
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9063078,
+        0.4226182
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 2,
+      "kind": 0,
+      "steps": [
+        [
+          12.6861725,
+          1.08404517
+        ],
+        [
+          12.6861725,
+          1.08404517
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.981627166,
+        -0.190809041
+      ]
+    },
+    {
+      "t": "rally_test",
+      "unitID": 5,
+      "test": {
+        "rolls": [
+          {
+            "result": 1,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 6,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 8,
+        "rankBonusModifier": 0,
+        "penalty": 0,
+        "success": true,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": false
+      }
+    },
+    {
+      "t": "move",
+      "unitID": 1,
+      "kind": 0,
+      "steps": [
+        [
+          -10.580636,
+          5.25557756
+        ],
+        [
+          -10.580636,
+          5.25557756
+        ],
+        [
+          -1.89099789,
+          7.59868574
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.60813427,
+        0.7938342
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 0,
+      "kind": 0,
+      "steps": [
+        [
+          1.95381379,
+          11.7972164
+        ],
+        [
+          1.95381379,
+          11.7972164
+        ],
+        [
+          11.847785,
+          12.142724
+        ],
+        [
+          11.847785,
+          12.142724
+        ],
+        [
+          12.5787153,
+          9.751963
+        ],
+        [
+          12.5787153,
+          9.751963
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.994521856,
+        0.104528718
+      ]
+    },
+    {
+      "t": "ability_used",
+      "unitID": 0,
+      "effectID": "regrowth",
+      "isCharacter": true
+    },
+    {
+      "t": "spell",
+      "casterUnitID": 0,
+      "casterIsCharacter": true,
+      "effectID": "regrowth",
+      "targets": [
+        6
+      ]
+    },
+    {
+      "t": "heal",
+      "unitID": 6,
+      "amount": 4,
+      "onCharacter": false,
+      "restoreModels": false,
+      "rolls": [
+        {
+          "result": 3,
+          "success": true,
+          "critFail": false,
+          "autoSuccess": false,
+          "rerolled": false,
+          "resultPreReroll": 0,
+          "successPreReroll": false,
+          "isD3": true,
+          "doubleWounds": false,
+          "bonus": 0
+        }
+      ],
+      "casterUnitID": 0,
+      "casterIsCharacter": true
+    },
+    {
+      "t": "move",
+      "unitID": 3,
+      "kind": 0,
+      "steps": [
+        [
+          -4.10195637,
+          -2.32320714
+        ],
+        [
+          -4.10195637,
+          -2.32320714
+        ],
+        [
+          0.453274727,
+          -1.68301034
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.656058967,
+        0.754709661
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 2
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        6,
+        7,
+        4
+      ],
+      "characterUnitIDs": [
+        7
+      ],
+      "cameraPosition": [
+        4.73986769,
+        5.024315,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 7,
+      "unitID2": 6,
+      "isCharacter1": true,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            }
+          ],
+          "target": 3,
+          "successes": 3,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>5</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": true
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 2,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>4</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 1,
+        "attackingModels": [],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": false
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 6,
+      "unitID2": 7,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 3,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 5,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 4,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 1,
+        "attackingModels": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 4,
+      "unitID2": 7,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 2,
+          "rollerID": 0,
+          "unitID": 13,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 1,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 1,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 2,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 13,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 2,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 3
+    },
+    {
+      "t": "break_test",
+      "unitID": 7,
+      "test": {
+        "rolls": [
+          {
+            "result": 1,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 6,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 11,
+        "rankBonusModifier": 2,
+        "penalty": 3,
+        "success": true,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": true
+      }
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "objectives_scored",
+      "player": 0,
+      "points": 50
+    },
+    {
+      "t": "turn",
+      "turn": 4
+    },
+    {
+      "t": "phase",
+      "phase": 0
+    },
+    {
+      "t": "move",
+      "unitID": 0,
+      "kind": 1,
+      "steps": [
+        [
+          11.3649035,
+          7.29581928
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.9063078,
+        0.4226182
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 2,
+      "kind": 1,
+      "steps": [
+        [
+          14.028677,
+          0.0989445448
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.882637739,
+        -0.470053643
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 1
+    },
+    {
+      "t": "move",
+      "unitID": 5,
+      "kind": 0,
+      "steps": [
+        [
+          8.335144,
+          -12.0236979
+        ],
+        [
+          8.335144,
+          -12.0236979
+        ],
+        [
+          10.3367481,
+          -9.400041
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.3201188,
+        -0.9473775
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 3,
+      "kind": 0,
+      "steps": [
+        [
+          0.453274727,
+          -1.68301034
+        ],
+        [
+          0.453274727,
+          -1.68301034
+        ],
+        [
+          7.051775,
+          -3.70037341
+        ],
+        [
+          7.051775,
+          -3.70037341
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.398748964,
+        0.9170602
+      ]
+    },
+    {
+      "t": "move",
+      "unitID": 1,
+      "kind": 0,
+      "steps": [
+        [
+          -1.89099789,
+          7.59868574
+        ],
+        [
+          -1.89099789,
+          7.59868574
+        ],
+        [
+          4.446005,
+          11.4199858
+        ],
+        [
+          4.446005,
+          11.4199858
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.963418961,
+        0.267999858
+      ]
+    },
+    {
+      "t": "phase",
+      "phase": 2
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        6,
+        7,
+        4
+      ],
+      "characterUnitIDs": [
+        7
+      ],
+      "cameraPosition": [
+        4.73986769,
+        5.024315,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 7,
+      "unitID2": 6,
+      "isCharacter1": true,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            }
+          ],
+          "target": 3,
+          "successes": 3,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>5</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": true
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>4</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": false
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 6,
+      "unitID2": 7,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 5,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 3,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 5,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 2,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 15,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>7</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 2,
+        "attackingModels": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 4,
+      "unitID2": 7,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 3,
+          "rollerID": 0,
+          "unitID": 13,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 3,
+          "successes": 3,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 2,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 16,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 13,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 2,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 2
+    },
+    {
+      "t": "break_test",
+      "unitID": 7,
+      "test": {
+        "rolls": [
+          {
+            "result": 1,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 6,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 11,
+        "rankBonusModifier": 2,
+        "penalty": 2,
+        "success": true,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": true
+      }
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        0,
+        9
+      ],
+      "characterUnitIDs": [
+        0
+      ],
+      "cameraPosition": [
+        10.5605564,
+        6.62089252,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 0,
+      "unitID2": 9,
+      "isCharacter1": true,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": true
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 18,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 0,
+        "defenderFacing": 3,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 0,
+          "target": 0,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 0,
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackerFacing": 0,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": false
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 0,
+      "unitID2": 9,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 5,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 18,
+          "preRollText": "Power <color=#81D7E5><size=125%>6</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [
+          0
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 3,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [],
+          "target": 4,
+          "successes": 0,
+          "rollerID": 1,
+          "unitID": 18,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [],
+          "target": 3,
+          "successes": 0,
+          "rollerID": 0,
+          "unitID": 9,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 0,
+        "attackingModels": [],
+        "attackerFacing": 3,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 1
+    },
+    {
+      "t": "break_test",
+      "unitID": 9,
+      "test": {
+        "rolls": [
+          {
+            "result": 4,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 4,
+            "success": true,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 11,
+        "rankBonusModifier": 3,
+        "penalty": 1,
+        "success": true,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": false
+      }
+    },
+    {
+      "t": "move",
+      "unitID": 9,
+      "kind": 4,
+      "steps": [
+        [
+          9.75621,
+          5.94596529
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        -0.42261824,
+        0.9063078
+      ]
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "engagement_start",
+      "unitIDs": [
+        2,
+        8
+      ],
+      "characterUnitIDs": [],
+      "cameraPosition": [
+        15.23185,
+        -0.7102991,
+        0.0
+      ]
+    },
+    {
+      "t": "combat_contact",
+      "unitID1": 2,
+      "unitID2": 8,
+      "isCharacter1": false,
+      "isCharacter2": false,
+      "stepOne": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 5,
+          "rollerID": 0,
+          "unitID": 11,
+          "preRollText": "Skill <color=#81D7E5><size=125%>4</color> </size>VS Skill <color=#81D7E5><size=125%>5</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 2,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 3,
+          "successes": 2,
+          "rollerID": 1,
+          "unitID": 17,
+          "preRollText": "Power <color=#81D7E5><size=125%>3</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 3,
+        "attackingModels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "attackerFacing": 0,
+        "defenderFacing": 1,
+        "chargeBonus": true,
+        "firstRound": false
+      },
+      "stepTwo": {
+        "toHit": {
+          "rollType": 0,
+          "rolls": [
+            {
+              "result": 5,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 4,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": true,
+              "resultPreReroll": 1,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": [
+                1
+              ]
+            }
+          ],
+          "target": 3,
+          "successes": 3,
+          "rollerID": 1,
+          "unitID": 17,
+          "preRollText": "Skill <color=#81D7E5><size=125%>5</color> </size>VS Skill <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "save": {
+          "rollType": 1,
+          "rolls": [
+            {
+              "result": 1,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 3,
+              "success": false,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            },
+            {
+              "result": 6,
+              "success": true,
+              "critFail": false,
+              "autoSuccess": false,
+              "rerolled": false,
+              "resultPreReroll": 0,
+              "successPreReroll": false,
+              "isD3": false,
+              "doubleWounds": false,
+              "bonus": 0,
+              "rerollTypes": []
+            }
+          ],
+          "target": 4,
+          "successes": 1,
+          "rollerID": 0,
+          "unitID": 11,
+          "preRollText": "Power <color=#81D7E5><size=125%>4</color> </size>VS Defense <color=#81D7E5><size=125%>4</color>",
+          "isCharacter": false
+        },
+        "woundsCaused": 2,
+        "attackingModels": [
+          4,
+          9,
+          14
+        ],
+        "attackerFacing": 1,
+        "defenderFacing": 0,
+        "chargeBonus": false,
+        "firstRound": false
+      },
+      "hasSecondStep": true
+    },
+    {
+      "t": "combat_result",
+      "winnerPlayerID": 0,
+      "score": 3
+    },
+    {
+      "t": "break_test",
+      "unitID": 8,
+      "test": {
+        "rolls": [
+          {
+            "result": 6,
+            "success": false,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          },
+          {
+            "result": 6,
+            "success": false,
+            "critFail": false,
+            "autoSuccess": false,
+            "rerolled": false,
+            "resultPreReroll": 0,
+            "successPreReroll": false,
+            "isD3": false,
+            "doubleWounds": false,
+            "bonus": 0,
+            "rerollTypes": []
+          }
+        ],
+        "rerolled": false,
+        "unitDiscipline": 11,
+        "rankBonusModifier": 2,
+        "penalty": 3,
+        "success": false,
+        "autoSuccess": false,
+        "crumble": false,
+        "hasCharacter": false
+      }
+    },
+    {
+      "t": "engagement_end"
+    },
+    {
+      "t": "move",
+      "unitID": 8,
+      "kind": 2,
+      "steps": [
+        [
+          16.4350224,
+          -1.51954269
+        ],
+        [
+          19.81,
+          -5.25
+        ],
+        [
+          22.31,
+          -5.75
+        ],
+        [
+          22.6099987,
+          -5.75
+        ]
+      ],
+      "finalRotation": [
+        0.0,
+        0.0,
+        0.7071068,
+        -0.7071068
+      ]
+    },
+    {
+      "t": "objectives_scored",
+      "player": 0,
+      "points": 50
+    },
+    {
+      "t": "turn",
+      "turn": 5
+    },
+    {
+      "t": "phase",
+      "phase": 0
+    },
+    {
+      "t": "concede",
+      "player": 1
+    },
+    {
+      "t": "game_end",
+      "outcome": {
+        "winnerPlayerID": 0,
+        "reason": 2,
+        "player0Score": 534,
+        "player1Score": 0,
+        "finalTurn": 5
+      }
+    }
+  ],
+  "outcome": {
+    "winnerPlayerID": 0,
+    "reason": 2,
+    "player0Score": 534,
+    "player1Score": 0,
+    "finalTurn": 5
+  },
+  "HasStartingPositions": true
+}

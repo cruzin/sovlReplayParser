@@ -78,10 +78,18 @@ Parser sample sweep:
 
 Expected bundled sample coverage currently includes:
 
-- `260522-2031_Cruz_vs_darkfox.SOVL`
-- `260522-2118_Cruz_vs_darkfox.SOVL`
-- `260528-0110_ZakMcKracken_vs_ccc.SOVL`
-- `260529-2336_Cruz_vs_demin132132.SOVL`
+- `261005-1236_ZakMcKracken_vs_[SES]Darky_TwilightGlade.SOVL`
+- `261005-1550_ZakMcKracken_vs_mrmeh_CoyoteCanyon.SOVL`
+- `261005-1606_CaptainToad_vs_ZakMcKracken_BloodsweptFields.SOVL`
+- `261005-2025_w1ck_vs_ZakMcKracken_CursedCrossroads.SOVL`
+- `261005-2228_ZakMcKracken_vs_Alberich_Duskbrook.SOVL`
+
+Legacy samples are preserved in `tests/fixtures/legacy`. Run
+`node scripts/test-replay-format.mjs` to verify both formats, D6 coverage,
+combat ownership, recorded outcomes, and batch aggregation. Format v2 is
+adapted in `src/parser/replayFormat.ts`; findings are in `docs/replay-format-v2.md`.
+Its explicit match outcome and objective points are exposed as recorded data;
+objective state and other enum codes must not be assigned guessed labels.
 
 ## Refactor Guidance
 
