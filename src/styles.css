@@ -1060,6 +1060,12 @@ td span {
   color: #697680;
 }
 
+td .matchup-detail {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+}
+
 .positive {
   color: #28715f;
   font-weight: 800;

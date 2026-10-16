@@ -179,6 +179,7 @@ export function analyzeReplayBatch(replayInputs, title = "Bulk replay analysis")
   };
   const games = analyses.map((analysis) => ({
     title: analysis.title,
+    outcome: analysis.recordedData?.outcome ?? null,
     players: analysis.players,
     factions: analysis.players.map((player) => player.faction),
     favor: analysis.favor,

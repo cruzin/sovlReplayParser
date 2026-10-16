@@ -75,7 +75,7 @@ function OpponentFactionOverview({ overview }) {
                   <p className="opponent-own-factions">
                     Win rate {matchupPercent(faction.winRate)} ({faction.wins}W / {faction.losses}L / {faction.draws}D; {faction.resultGames} recorded results)
                     {` · Avg score difference ${signedAverage(faction.averageScoreDifference)}`}
-                    {` · Avg objective points ${matchupAverage(faction.averageObjectivePoints)} / ${matchupAverage(faction.averageOpponentObjectivePoints)} (you / opponent)`}
+                    {` · Avg points ${matchupAverage(faction.averagePoints)} / ${matchupAverage(faction.averageOpponentPoints)} (objectives: ${matchupAverage(faction.averageObjectivePoints)} / ${matchupAverage(faction.averageOpponentObjectivePoints)}) (you / opponent)`}
                   </p>
                   <div className="opponent-faction-bar" aria-label={`${faction.name} ${formatPercent(faction.percentage)}`}>
                     <span style={{ width: `${Math.round(faction.percentage * 100)}%` }} />
@@ -103,7 +103,7 @@ function signedAverage(value) {
 }
 
 function MatchupNote() {
-  return <p className="opponent-own-factions">Win rates use recorded outcomes; draws count as non-wins. Score differences are your score minus your opponent's. Objective averages show recorded objective points per game. Missing data is excluded from averages.</p>;
+  return <p className="opponent-own-factions">Win rates use recorded outcomes; draws count as non-wins. Final points differences are your final score minus your opponent's. Average points use final scores, including objective points; parentheses show the objective portion. Missing data is excluded from averages.</p>;
 }
 
 function OpponentPlayerOverview({ overview }) {
@@ -115,12 +115,12 @@ function OpponentPlayerOverview({ overview }) {
     {players.map((player) => <div className="opponent-player-card" key={player.playerName}>
       <div className="opponent-player-heading"><strong>{player.playerName}'s opponents</strong></div>
       <div className="table-wrap compact"><table>
-        <thead><tr><th>Opponent</th><th>Games</th><th>Win rate</th><th>W / L / D</th><th>Avg score difference</th><th>Avg objective points (you / opponent)</th></tr></thead>
+        <thead><tr><th>Opponent</th><th>Games</th><th>Win rate</th><th>W / L / D</th><th>Avg final points difference</th><th>Avg points (you / opponent)</th></tr></thead>
         <tbody>{player.opponents.map((opponent) => <tr key={opponent.opponentName}>
-          <td>{opponent.opponentName}</td><td>{opponent.games}<span>{opponent.resultGames} recorded results</span></td>
+          <td>{opponent.opponentName}</td><td>{opponent.resultGames} (<span title="replay files">{opponent.games}</span>)</td>
           <td>{matchupPercent(opponent.winRate)}</td><td>{opponent.wins} / {opponent.losses} / {opponent.draws}</td>
-          <td>{signedAverage(opponent.averageScoreDifference)}</td>
-          <td>{matchupAverage(opponent.averageObjectivePoints)} / {matchupAverage(opponent.averageOpponentObjectivePoints)}</td>
+          <td>{signedAverage(opponent.averageScoreDifference)}<span className="matchup-detail">{opponent.scoreGames} scored games</span></td>
+          <td>{matchupAverage(opponent.averagePoints)} / {matchupAverage(opponent.averageOpponentPoints)}<span className="matchup-detail">(objectives: {matchupAverage(opponent.averageObjectivePoints)} / {matchupAverage(opponent.averageOpponentObjectivePoints)})</span></td>
         </tr>)}</tbody>
       </table></div>
     </div>)}
@@ -151,6 +151,7 @@ function BulkGameTable({ games }) {
             <th>Replay</th>
             <th>Players</th>
             <th>Player factions</th>
+            <th>Final points / difference</th>
             <th>Favored</th>
             <th>Dice</th>
             <th>Combats</th>
@@ -169,6 +170,12 @@ function BulkGameTable({ games }) {
                 {game.players
                   .map((player, index) => `${player.name}: ${game.factions?.[index]?.name ?? "Unknown faction"}`)
                   .join(" vs ")}
+              </td>
+              <td>
+                {Number.isFinite(game.outcome?.player0Score) && Number.isFinite(game.outcome?.player1Score) ? <>
+                  {game.outcome.player0Score} / {game.outcome.player1Score}
+                  <span className="matchup-detail">Difference {signedAverage(game.outcome.player0Score - game.outcome.player1Score)} ({game.players[0].name})</span>
+                </> : "n/a"}
               </td>
               <td>
                 {game.favor ? (
