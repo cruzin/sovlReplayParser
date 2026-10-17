@@ -7,10 +7,11 @@ the insert function, and the Edge Function enforce authorization.
 
 ## Using the site
 
-1. Sign in on the entry screen with an account created in Supabase Authentication.
+1. Choose **Continue with Google** on the entry screen. New accounts are created
+   automatically. Configure the [Google OAuth provider](authentication.md) first.
    The parser mounts only after sign-in; signing out removes it and its loaded data.
-2. Load a replay or bulk selection. For the authorized uploader account
-   (`b424b4a7-751b-4dac-9a6b-8840c7720777`), valid summaries are sent automatically.
+2. Load a replay or bulk selection. All signed-in users can submit valid summaries
+   automatically after the authenticated-upload backend update below is deployed.
 3. Upload results and failures are logged to the developer console. Reloading
    the files retries submission; identifiers prevent duplicate storage.
 
@@ -21,11 +22,10 @@ matches remain eligible for retry. Clearing site storage resets the cache;
 database uniqueness remains the final duplicate check. Unavailable or full local
 storage does not block uploads.
 
-Anonymous users see only the login screen. Other signed-in accounts can analyze
-files, but backend upload permission remains restricted to the uploader. Bundled
+Anonymous users see only the login screen. Signed-in accounts can analyze files
+and submit summaries. Bundled
 sample loads do not submit statistics. Replays missing recorded match data are
-skipped. Passwords are cleared from the form after sign-in attempts; the Supabase
-SDK manages session persistence and refresh.
+skipped. The Supabase SDK manages OAuth, session persistence, and refresh.
 
 Only the compact payload from `src/parser/statistics.ts` is sent. It includes the
 fingerprint, UTC timestamp, player names, factions, commander type IDs, winner,
@@ -66,6 +66,7 @@ npm run build
 node scripts/test-statistics.mjs
 node scripts/test-statistics-upload.mjs
 node scripts/test-global-statistics.mjs
+node scripts/test-ingest-auth.mjs
 node scripts/test-replay-format.mjs
 ```
 
@@ -73,3 +74,25 @@ The upload test mocks all HTTP requests. Live end-to-end verification requires
 the uploader to sign in, submit a real match twice, and confirm that the second
 submission reports a duplicate. The Edge Function and SQL must already have been
 deployed in the dashboard.
+
+## Enable submissions from every signed-in user
+
+1. Run `supabase/migrations/20261017010000_authenticated_uploads.sql` in SQL Editor.
+   It replaces the original UUID check in `public.ingest_match(jsonb)` with a
+   non-null user ID and authenticated-role check. Existing validation, atomic
+   inserts, and duplicate handling remain unchanged. If the deployed function
+   differs from the expected original, it fails without changing permissions.
+2. Deploy `supabase/functions/ingest-matches/index.ts` and `handler.ts` to the
+   existing Edge Function using the dashboard editor. Both files must be present.
+   Alternatively, in the previously supplied single-file function, remove the
+   `allowedUser` constant and the `if (auth.user.id !== allowedUser)` rejection
+   block; keep `auth.getUser(token)` and its invalid-session rejection intact.
+3. Keep the function's gateway JWT toggle as previously configured; the handler
+   verifies user sessions itself. It uses the caller's Authorization header for
+   the RPC, not an admin/service-role client.
+4. Deploy the frontend and test a fresh account with a replay not already in the
+   browser cache. Confirm added/duplicate counts in the console and database.
+
+The migration grants RPC execution only to `authenticated`. Direct browser
+table access remains blocked. Missing/expired sessions are rejected by the Edge
+Function, and the database also checks the caller's identity and role.

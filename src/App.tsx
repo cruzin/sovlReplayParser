@@ -15,7 +15,8 @@ import {
   WandSparkles,
 } from "lucide-react";
 import { analyzeReplay, analyzeReplayBatch } from "./parser/sovlReplay";
-import { AuthGate, StatisticsUpload } from "./components/StatisticsUpload";
+import { AuthGate } from "./components/AuthGate";
+import { StatisticsUpload } from "./components/StatisticsUpload";
 import { GlobalStatistics } from "./components/GlobalStatistics";
 import { BulkAnalysis } from "./components/BulkAnalysis";
 import { EffectsAndRerolls } from "./components/EffectsAndRerolls";
