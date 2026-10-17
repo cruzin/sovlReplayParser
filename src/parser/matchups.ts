@@ -2,11 +2,13 @@
 export function summarizeMatchupResults(analyses) {
   const players = new Map();
   const keyFor = (name) => String(name).trim().toLowerCase();
-  const empty = () => ({ games: 0, resultGames: 0, wins: 0, losses: 0, draws: 0, scoreGames: 0, scoreDifferenceTotal: 0, objectiveGames: 0, objectivePointsTotal: 0, opponentObjectivePointsTotal: 0 });
+  const empty = () => ({ games: 0, resultGames: 0, wins: 0, losses: 0, draws: 0, scoreGames: 0, scoreTotal: 0, opponentScoreTotal: 0, scoreDifferenceTotal: 0, objectiveGames: 0, objectivePointsTotal: 0, opponentObjectivePointsTotal: 0 });
   const finish = (row) => ({
     ...row,
     winRate: row.resultGames ? row.wins / row.resultGames : null,
     averageScoreDifference: row.scoreGames ? row.scoreDifferenceTotal / row.scoreGames : null,
+    averagePoints: row.scoreGames ? row.scoreTotal / row.scoreGames : null,
+    averageOpponentPoints: row.scoreGames ? row.opponentScoreTotal / row.scoreGames : null,
     averageObjectivePoints: row.objectiveGames ? row.objectivePointsTotal / row.objectiveGames : null,
     averageOpponentObjectivePoints: row.objectiveGames ? row.opponentObjectivePointsTotal / row.objectiveGames : null,
   });
@@ -35,6 +37,8 @@ export function summarizeMatchupResults(analyses) {
         const enemyScore = outcome?.[`player${opponent.id}Score`];
         if (Number.isFinite(ownScore) && Number.isFinite(enemyScore)) {
           row.scoreGames += 1;
+          row.scoreTotal += ownScore;
+          row.opponentScoreTotal += enemyScore;
           row.scoreDifferenceTotal += ownScore - enemyScore;
         }
         // Completed v2 games with no scoring events contribute zero objective points.
