@@ -77,11 +77,88 @@ h1 {
   color: #56636f;
 }
 
+.login-shell { min-height: 100vh; display: grid; place-items: center; }
+.login-card {
+  width: min(440px, 100%);
+  padding: 28px;
+  border: 1px solid #89958d;
+  border-radius: 12px;
+}
+.login-card h1 { font-size: 2.5rem; }
+.login-card .statistics-login { display: grid; }
+.login-card .statistics-login input { width: 100%; }
+.login-card .error { margin: 16px 0 0; }
+.account-bar {
+  width: min(1440px, calc(100% - 32px));
+  margin: 16px auto 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.statistics-login { display: grid; gap: 12px; }
+
+.statistics-login label { display: grid; gap: 4px; }
+.statistics-login input {
+  min-height: 40px;
+  max-width: 100%;
+  width: 240px;
+  padding: 8px;
+  border: 1px solid #89958d;
+  border-radius: 6px;
+  background: var(--page-bg);
+  color: var(--text);
+}
+.login-card button:disabled,
+.account-bar button:disabled { opacity: 0.6; cursor: wait; }
+
 .controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
   gap: 10px;
+}
+
+.app-navigation {
+  width: min(1440px, calc(100% - 32px));
+  margin: 16px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.app-navigation a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid #89958d;
+  border-radius: 8px;
+}
+.app-navigation a[aria-current="page"] { background: #517f8e; color: white; }
+.global-statistics-filter { margin: 16px 0; }
+.faction-pie { margin: 0; }
+.faction-pie figcaption { margin-bottom: 16px; }
+.faction-pie-layout { display: grid; grid-template-columns: minmax(220px, 360px) minmax(0, 1fr); gap: 24px; align-items: center; }
+.faction-pie-visual svg { width: 100%; max-height: 340px; display: block; overflow: visible; }
+.faction-pie-slice { stroke: var(--page-bg); stroke-width: 3px; cursor: pointer; transition: opacity 120ms; }
+.faction-pie-slice:focus-visible { outline: none; stroke: var(--text); stroke-width: 5px; }
+.faction-pie-detail { min-height: 2.8em; text-align: center; margin: 12px 0 0; font-size: 0.9rem; }
+.faction-pie-legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.faction-pie-legend button { width: 100%; display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 8px; text-align: left; color: var(--text); background: transparent; border: 1px solid transparent; border-radius: 6px; cursor: pointer; }
+.faction-pie-legend button:hover,
+.faction-pie-legend button[aria-pressed="true"] { border-color: #89958d; background: var(--page-wash); }
+.faction-pie-swatch { width: 14px; height: 14px; border-radius: 3px; }
+.faction-pie-legend small { font-weight: normal; }
+@media (max-width: 650px) {
+  .faction-pie-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .faction-pie-visual { max-width: 320px; margin: 0 auto; }
+}
+.global-statistics-filter select {
+  padding: 8px;
+  border: 1px solid #89958d;
+  border-radius: 6px;
+  background: var(--page-bg);
+  color: var(--text);
 }
 
 .select-wrap,

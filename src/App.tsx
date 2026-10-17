@@ -15,6 +15,8 @@ import {
   WandSparkles,
 } from "lucide-react";
 import { analyzeReplay, analyzeReplayBatch } from "./parser/sovlReplay";
+import { AuthGate, StatisticsUpload } from "./components/StatisticsUpload";
+import { GlobalStatistics } from "./components/GlobalStatistics";
 import { BulkAnalysis } from "./components/BulkAnalysis";
 import { EffectsAndRerolls } from "./components/EffectsAndRerolls";
 import { SpellImpact, SwingEvents, UnitFate } from "./components/InsightPanels";
@@ -46,11 +48,33 @@ function getInitialTheme(): Theme {
 }
 
 export function App() {
+  return <AuthGate>{(session) => <AuthenticatedPages key={session.user.id} session={session} />}</AuthGate>;
+}
+
+function AuthenticatedPages({ session }) {
+  const [page, setPage] = useState(() => window.location.hash === "#/statistics" ? "statistics" : "parser");
+  useEffect(() => {
+    const navigate = () => setPage(window.location.hash === "#/statistics" ? "statistics" : "parser");
+    window.addEventListener("hashchange", navigate);
+    return () => window.removeEventListener("hashchange", navigate);
+  }, []);
+  return <>
+    <nav className="app-navigation" aria-label="Main navigation">
+      <a href="#/parser" aria-current={page === "parser" ? "page" : undefined}>Replay parser</a>
+      <a href="#/statistics" aria-current={page === "statistics" ? "page" : undefined}>Global statistics</a>
+    </nav>
+    <div hidden={page !== "parser"}><ReplayParser session={session} /></div>
+    {page === "statistics" && <GlobalStatistics />}
+  </>;
+}
+
+function ReplayParser({ session }) {
   const [samples, setSamples] = useState([]);
   const [selectedSample, setSelectedSample] = useState("");
   const [analysis, setAnalysis] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [statisticsUpload, setStatisticsUpload] = useState(null);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const isBatch = analysis?.mode === "batch";
 
@@ -74,6 +98,7 @@ export function App() {
   }, []);
 
   async function loadSample(sample) {
+    setStatisticsUpload(null);
     setLoading(true);
     setError("");
     setSelectedSample(sample.file);
@@ -97,7 +122,9 @@ export function App() {
     setSelectedSample("");
     try {
       const text = await file.text();
-      setAnalysis(analyzeReplay(text, file.name));
+      const result = analyzeReplay(text, file.name);
+      setAnalysis(result);
+      setStatisticsUpload({ analyses: [result], bulk: false });
     } catch (err) {
       setError(`Could not parse uploaded replay: ${(err as Error).message}`);
     } finally {
@@ -119,7 +146,9 @@ export function App() {
           text: await file.text(),
         })),
       );
-      setAnalysis(analyzeReplayBatch(replayInputs, `${files.length} replay bulk analysis`));
+      const result = analyzeReplayBatch(replayInputs, `${files.length} replay bulk analysis`);
+      setAnalysis(result);
+      setStatisticsUpload({ analyses: result.analyses, bulk: true });
     } catch (err) {
       setError(`Could not parse bulk replay upload: ${(err as Error).message}`);
     } finally {
@@ -187,6 +216,7 @@ export function App() {
         </div>
       </section>
 
+      <StatisticsUpload upload={statisticsUpload} session={session} />
       {error && <div className="error">{error}</div>}
       {loading && <div className="loading">Parsing replay data...</div>}
       {analysis && !loading && isBatch && <BulkAnalysis analysis={analysis} />}
