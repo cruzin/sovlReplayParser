@@ -29,6 +29,7 @@ The expected schema and contracts are described in
 | [20261114010000_latest_upload_players.sql](migrations/20261114010000_latest_upload_players.sql) | Replaces latest RPC, adding player appearance counts |
 | [20261114020000_inferred_uploaders.sql](migrations/20261114020000_inferred_uploaders.sql) | Adds inferred slot; renames insert to private base and creates authenticated wrapper |
 | [20261114030000_opponent_statistics.sql](migrations/20261114030000_opponent_statistics.sql) | Adds opponent-only RPC; requires inferred slot |
+| [20261114040000_win_only_score_averages.sql](migrations/20261114040000_win_only_score_averages.sql) | Updates all three RPCs to average score margins over wins only; preserves their other fields |
 
 Do not rerun an older function-replacement migration over a newer definition.
 For example, rerunning the initial latest-30 migration removes the later player

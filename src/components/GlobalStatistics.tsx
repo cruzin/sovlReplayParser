@@ -26,7 +26,7 @@ function ResultsTable({ rows, kind, opponentsOnly = false }: { rows: StatisticsR
       {kind === "matchups" && <td>{name(row.opponent_faction_id)}</td>}
       <td>{row.games.toLocaleString()}</td><td>{row.wins.toLocaleString()}</td><td>{row.losses.toLocaleString()}</td><td>{row.draws.toLocaleString()}</td>
       <td>{row.games ? `${(100 * row.wins / row.games).toFixed(1)}%` : "—"}</td>
-      <td>{row.average_score_difference > 0 ? "+" : ""}{row.average_score_difference.toFixed(1)}</td>
+      <td>{row.average_score_difference == null ? "—" : `${row.average_score_difference > 0 ? "+" : ""}${row.average_score_difference.toFixed(1)}`}</td>
     </tr>)}</tbody>
   </table></div>;
 }
@@ -88,7 +88,7 @@ export function GlobalStatistics({ scope = "all" }: { scope?: StatisticsScope })
         <Panel title="Faction results" icon={<Users />}><ResultsTable rows={filter(data.factions)} kind="factions" /></Panel>
         <Panel title="Faction matchups" icon={<Swords />}><ResultsTable rows={filter(data.matchups)} kind="matchups" opponentsOnly={opponentsOnly} /></Panel>
         <Panel title="Commander results" icon={<Trophy />}><ResultsTable rows={filter(data.commanders)} kind="commanders" /></Panel>
-        <p className="subtitle">Win rate is wins divided by army appearances; draws count as non-wins. {opponentsOnly ? "Each eligible match contributes one opponent army, including mirror matches. Matchups show that opponent’s results against the uploader’s faction." : "Each match contributes two army appearances, including mirror matches."} Commander results count armies containing that type once per match, regardless of copies. Score differences are from the listed faction’s perspective. Small samples may not reflect overall balance.</p>
+        <p className="subtitle">Win rate is wins divided by army appearances; draws count as non-wins. {opponentsOnly ? "Each eligible match contributes one opponent army, including mirror matches. Matchups show that opponent’s results against the uploader’s faction." : "Each match contributes two army appearances, including mirror matches."} Commander results count armies containing that type once per match, regardless of copies. Average win score differences include wins only, from the listed faction’s perspective; no wins is shown as —. Small samples may not reflect overall balance.</p>
       </>}
     </>}
   </main>;
