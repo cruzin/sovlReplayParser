@@ -81,4 +81,3 @@ revoke all on function public.latest_upload_statistics() from public, anon, auth
 grant execute on function public.latest_upload_statistics() to authenticated;
 
 commit;
-
