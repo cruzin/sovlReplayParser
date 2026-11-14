@@ -1,14 +1,15 @@
 import { useState } from "react";
 import type { StatisticsRow } from "../services/globalStatistics";
 
-const colors = ["#3979ae", "#679a3b", "#bc8042", "#8961b3", "#b95166", "#379b91", "#d16c39", "#5769b1", "#988b31", "#477d54", "#ae5895", "#ae493f", "#498eac", "#7b838c"];
-const factionIds = ["EmpiresOfMen", "GreenskinTribes", "DwarfHolds", "ElvenConclaves", "DeadNations", "GoatmenRaiders", "AbyssalLegions", "ReptilianKingdoms", "RatkinClans", "DeepwoodGuardians", "DarkbornElves", "AbyssalDemons", "KnightsOfAvalon", "unknown"];
+const colors = ["#3979ae", "#679a3b", "#bc8042", "#8961b3", "#b95166", "#379b91", "#d16c39", "#5769b1", "#988b31", "#477d54", "#ae5895", "#ae493f", "#498eac", "#c5a04a", "#7b838c"];
+const factionIds = ["EmpiresOfMen", "GreenskinTribes", "DwarfHolds", "ElvenConclaves", "DeadNations", "GoatmenRaiders", "AbyssalLegions", "ReptilianKingdoms", "RatkinClans", "DeepwoodGuardians", "DarkbornElves", "AbyssalDemons", "KnightsOfAvalon", "UndyingDynasties", "unknown"];
 const label = (id: string) => id === "unknown" ? "Unknown faction" : id.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
 
-export function FactionPieChart({ rows, selected, onSelect }: {
+export function FactionPieChart({ rows, selected, onSelect, opponentsOnly = false }: {
   rows: StatisticsRow[];
   selected: string;
   onSelect: (id: string) => void;
+  opponentsOnly?: boolean;
 }) {
   const [hovered, setHovered] = useState("");
   const factions = [...rows].filter((row) => row.games > 0).sort((a, b) => b.games - a.games || a.faction_id.localeCompare(b.faction_id));
@@ -55,7 +56,7 @@ export function FactionPieChart({ rows, selected, onSelect }: {
               : <path key={slice.faction_id} d={slice.path} {...props}><title>{slice.description}</title></path>;
           })}
         </svg>
-        <p className="faction-pie-detail">{active?.description ?? "Both armies count in each match, including mirror matches."}</p>
+        <p className="faction-pie-detail">{active?.description ?? (opponentsOnly ? "Only the inferred uploader’s opponent counts in each match, including mirror matches." : "Both armies count in each match, including mirror matches.")}</p>
       </div>
       <ul className="faction-pie-legend">{slices.map((slice) => <li key={slice.faction_id}>
         <button type="button" aria-pressed={selected === slice.faction_id} onClick={() => toggle(slice.faction_id)}

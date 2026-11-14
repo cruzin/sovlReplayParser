@@ -39,6 +39,7 @@ const factionById = new Map(
     ["KnightsOfAvalon", "Knights of Avalon"],
     ["RatkinClans", "Ratkin Clans"],
     ["ReptilianKingdoms", "Reptilian Kingdoms"],
+    ["UndyingDynasties", "Undying Dynasties"],
   ].map(([id, name]) => [id, toFactionSummary(id, name)]),
 );
 
@@ -56,6 +57,7 @@ const factionTypeByCode = new Map([
   [11, "DarkbornElves"],
   [12, "AbyssalDemons"],
   [13, "KnightsOfAvalon"],
+  [14, "UndyingDynasties"],
 ]);
 
 export function factionFromList(list): FactionSummary {

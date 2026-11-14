@@ -1,4 +1,5 @@
 import { createStatisticsPayload } from "../parser/statistics";
+import { annotateUploader } from "../parser/uploaderInference";
 
 export type UploadSummary = {
   received: number;
@@ -36,17 +37,23 @@ export async function uploadStatistics(analyses, options: UploadOptions): Promis
   const cacheKey = `sovl-uploaded-matches-v1:${options.endpoint}`;
   const known = readIdentifiers(storage, cacheKey);
   const selected = new Set<string>();
-  const payloads = [];
+  const candidates = [];
   for (const analysis of analyses) {
     const payload = await createStatisticsPayload(analysis);
     if (!payload) { summary.skipped++; continue; }
-    if (known.has(payload.identifier) || selected.has(payload.identifier)) {
+    if (selected.has(payload.identifier)) {
       summary.cached++;
       continue;
     }
     selected.add(payload.identifier);
-    payloads.push(payload);
+    candidates.push(payload);
   }
+  // Cached games still provide context for inference, but are not sent again.
+  const payloads = annotateUploader(candidates, options.bulk).filter((payload) => {
+    if (!known.has(payload.identifier)) return true;
+    summary.cached++;
+    return false;
+  });
   const batches = [];
   let batch = [];
   let bytes = 2; // JSON array brackets

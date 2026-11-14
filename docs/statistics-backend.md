@@ -1,5 +1,11 @@
 # Shared statistics uploads
 
+Start with [statistics-architecture.md](statistics-architecture.md) for the payload,
+fingerprint, inference examples, and counting decisions. See
+[statistics-operations.md](statistics-operations.md) for read-only inspection,
+manual uploader backfills, troubleshooting, and release checks. Review
+[SQL prerequisites and migration order](../supabase/README.md) before deployment.
+
 The site uses the hosted Supabase project `eovllsljleficdhpgcda` and its
 `ingest-matches` Edge Function. No local database or Supabase CLI is required.
 The committed publishable key is a public browser credential; database grants,
@@ -30,6 +36,26 @@ skipped. The Supabase SDK manages OAuth, session persistence, and refresh.
 Only the compact payload from `src/parser/statistics.ts` is sent. It includes the
 fingerprint, UTC timestamp, player names, factions, commander type IDs, winner,
 and score difference. It excludes files, event streams, and army lists.
+
+The `uploader` field is an inferred replay player name or `null`. For bulk
+selections with at least two distinct valid games, names are counted once per
+game (ignoring case and surrounding spaces). A uniquely highest count identifies
+the inferred uploader. Ties and single-game uploads remain unset. Each game is
+tagged only if that inferred name identifies one of its players unambiguously.
+Inference uses the selection before the local-storage filter and before batching;
+duplicate files cannot influence it. This is not a verified account identity.
+
+Run `supabase/migrations/20261114020000_inferred_uploaders.sql` to store this as
+`matches.inferred_uploader_slot`. The migration preserves the deployed ingest
+validation behind a private base function and adds an authenticated wrapper.
+The existing Edge Function forwards the field without changes. Old payloads
+without `uploader` remain supported. Existing/duplicate matches are not backfilled
+or overwritten, and fingerprint/local-cache keys do not change.
+
+To select opponent sides in future statistics, join matches and players with
+`m.inferred_uploader_slot is not null and p.player_slot <> m.inferred_uploader_slot`.
+Exclude unknown inferences from opponent-only statistics. Current statistics
+continue to count both sides; the separate Opponents only page uses this filter.
 Bulk selections send arrays of at most 100 matches and 1 MB per request; a single
 upload sends an object. Backend failures do not block local analysis. A request
 timeout can occur after the server has saved data; retrying is safe.
@@ -58,6 +84,51 @@ matchup results; mirror games contribute two appearances. Commander types are
 deduplicated per army/match. Draws count as non-wins, and score differences use
 the army's perspective. No player names or individual match records are returned.
 
+## Latest uploads statistics
+
+Run `supabase/migrations/20261114000000_latest_upload_statistics.sql` in SQL
+Editor to enable `#/statistics/latestUploads` (the **Latest 30 uploads** link).
+This page reuses the Global Statistics layout, charts, and faction filter.
+It calls a separate authenticated `latest_upload_statistics()` RPC, leaving the
+existing all-time endpoint unchanged.
+
+The query selects at most 30 complete matches ordered by `matches.created_at`
+descending, with identifier as a deterministic tie-breaker, before calculating
+any faction, matchup, or commander aggregates. Recorded match dates do not
+determine the selection. Re-uploaded duplicates do not become new uploads.
+When fewer than 30 matches exist, all available complete matches are included.
+Overview counts and the pie chart use only this selection; commander copies and
+mirror matches follow the same counting rules as all-time statistics.
+
+Run `supabase/migrations/20261114010000_latest_upload_players.sql` to add the
+`playerAppearances` array to that RPC. Player names are grouped ignoring case
+and surrounding spaces, with one appearance per distinct match/name. The page
+shows a descending bar chart for the whole latest-30 selection, independent of
+the faction filter. Player names are replay display names, not verified accounts;
+these counts do not identify which account submitted the match.
+
+The **Latest 30 uploads** navigation link is shown only to
+`kjell.emil.wilhelmsen@gmail.com`. This is a link-visibility rule, not a backend
+access restriction: signed-in users can still open the route directly, and the
+RPC keeps its existing authenticated-user permission.
+
+## Opponent-only statistics
+
+After the inferred-uploader migration, run
+`supabase/migrations/20261114030000_opponent_statistics.sql` in SQL Editor.
+`#/statistics/onlyOpponents` calls the separate `opponent_statistics()` RPC.
+It returns the same statistics shape plus `excludedMatches` for complete matches
+without an inferred uploader. All-time and latest-30 queries are unchanged.
+
+Each eligible match contributes exactly one side: the opponent of the inferred
+uploader. Faction popularity, wins/losses/draws, score differences, and commander
+results all use that side only. Matchup rows retain the uploader's faction as
+the opposing context, but the results belong to the non-uploader. Mirror matches
+still count one opponent army; filtering does not exclude a whole faction ID.
+Unknown uploader slots are excluded, never guessed. Old records are not backfilled.
+This reduces uploader-selection bias but still describes the uploaded sample,
+not an unbiased census of SOVL players.
+
 ## Verification commands
 
 ```text
@@ -67,6 +138,7 @@ node scripts/test-statistics.mjs
 node scripts/test-statistics-upload.mjs
 node scripts/test-global-statistics.mjs
 node scripts/test-ingest-auth.mjs
+node scripts/test-uploader-inference.mjs
 node scripts/test-replay-format.mjs
 ```
 

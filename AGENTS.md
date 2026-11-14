@@ -97,3 +97,44 @@ objective state and other enum codes must not be assigned guessed labels.
 - Prefer adding new domain summaries to `summaries.ts` only if they combine existing parsed concepts. If they require new event decoding, add the low-level event parsing to `sovlReplay.ts` or a new parser module first.
 - Keep UI components focused on rendering existing analysis data. Avoid adding replay parsing logic inside React components.
 - Treat p-values and swing flags as review aids, not cheating proof. Preserve that language in UI copy.
+
+## Hosted Statistics and Uploader Attribution
+
+Read [docs/statistics-architecture.md](docs/statistics-architecture.md) before
+changing payloads, attribution, fingerprints, or aggregate queries. Deployment
+instructions are in [docs/statistics-backend.md](docs/statistics-backend.md);
+SQL prerequisites/order are in [supabase/README.md](supabase/README.md).
+
+- `src/parser/statistics.ts` creates metadata fingerprints and compact payloads.
+  Player slots follow alphabetically sorted payload order, not replay order.
+  Preserve each player's score when sorting; score difference is slot 0 minus 1.
+- `src/parser/uploaderInference.ts` identifies a uniquely most frequent player
+  across at least two distinct valid bulk games. Ties and single uploads are null.
+  Inference precedes local-cache filtering and batching. It is not a verified
+  relationship to the signed-in Google/Supabase account.
+- `src/services/statisticsUpload.ts` handles endpoint-scoped local deduplication,
+  batching (100 matches / 1 MB), and uploads. Raw replay files/events stay local.
+- SQL stores attribution as `matches.inferred_uploader_slot`; duplicate uploads
+  never backfill or overwrite it. Do not change fingerprints to correct metadata.
+- All-time and latest-30 statistics count both sides. Opponent-only statistics
+  count the side opposite the inferred uploader, excluding unknown slots. Do not
+  filter by faction ID: an opponent in a mirror match must still count.
+- Opponent matchup results/score margins are from the retained opponent's side;
+  the uploader faction is context only. Commander copies count once per type per
+  army/match in aggregate statistics. Draws use the recorded outcome.
+- Latest-30 selection uses upload `created_at`, not `recorded_utc`. Its player
+  appearance chart is not an uploader-account leaderboard. Its email-based link
+  visibility rule is not backend access control.
+- Keep `ingest_match_base` private after the inference migration. The authenticated
+  `ingest_match` wrapper must preserve original validation and atomic inserts.
+- Supabase deployments are separate from frontend builds. The repository's SQL
+  is incremental and does not yet contain the original baseline schema/insert.
+- The November format-2 replay establishes faction code 14 as Undying Dynasties.
+  Standalone commanders are flagged separately; do not alter combat character
+  attribution merely to include them in upload statistics.
+
+For statistics changes run `npm run typecheck`, `npm run build`, and relevant
+scripts: `test-statistics.mjs`, `test-statistics-upload.mjs`,
+`test-uploader-inference.mjs`, `test-global-statistics.mjs`, and
+`test-ingest-auth.mjs` under `scripts/`. Auth/HTTP checks use mocks; document live
+database/OAuth verification separately and never claim a local test deployed SQL.
