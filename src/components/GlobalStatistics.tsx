@@ -18,7 +18,7 @@ function ResultsTable({ rows, kind, opponentsOnly = false }: { rows: StatisticsR
       <th>Faction</th>
       {kind === "commanders" && <th>Commander</th>}
       {kind === "matchups" && <th>{opponentsOnly ? "Uploader faction" : "Opponent faction"}</th>}
-      <th>Army appearances</th><th>Wins</th><th>Losses</th><th>Draws</th><th>Win rate</th><th>Avg score difference</th>
+      <th>Army appearances</th><th>Wins</th><th>Losses</th><th>Draws</th><th>Win rate</th><th>Avg win score diff</th>
     </tr></thead>
     <tbody>{rows.map((row) => <tr key={`${row.faction_id}:${row.commander_type_id ?? row.opponent_faction_id ?? ""}`}>
       <td>{name(row.faction_id)}</td>
