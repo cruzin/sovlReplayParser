@@ -125,6 +125,16 @@ h1 {
 }
 .app-navigation a[aria-current="page"] { background: #517f8e; color: white; }
 .global-statistics-filter { margin: 16px 0; }
+.player-appearances-chart { margin: 0; }
+.player-appearances-chart figcaption { margin-bottom: 16px; }
+.player-appearances-chart ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.player-appearances-chart li { display: grid; grid-template-columns: minmax(100px, 220px) minmax(60px, 1fr) 3ch; align-items: center; gap: 12px; }
+.player-appearances-name { overflow-wrap: anywhere; }
+.player-appearances-track { height: 22px; border-radius: 4px; background: var(--page-wash); overflow: hidden; }
+.player-appearances-track span { display: block; height: 100%; background: #517f8e; border-radius: 4px; }
+@media (max-width: 600px) {
+  .player-appearances-chart li { grid-template-columns: minmax(80px, 120px) minmax(30px, 1fr) 3ch; gap: 8px; }
+}
 .faction-pie { margin: 0; }
 .faction-pie figcaption { margin-bottom: 16px; }
 .faction-pie-layout { display: grid; grid-template-columns: minmax(220px, 360px) minmax(0, 1fr); gap: 24px; align-items: center; }

@@ -421,6 +421,7 @@ function extractUnits(list, player) {
       width: Number(entry?.width || 0),
       customWidthSet: Boolean(entry?.customWidthSet),
       hasCharacter: Boolean(entry?.hasCharacter),
+      isStandaloneCommander: section === list?.characters && !entry?.hasCharacter && Boolean(entry?.unitID),
       commander: extractCommander(entry),
     })),
   );

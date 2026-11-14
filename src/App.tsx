@@ -18,6 +18,7 @@ import { analyzeReplay, analyzeReplayBatch } from "./parser/sovlReplay";
 import { AuthGate } from "./components/AuthGate";
 import { StatisticsUpload } from "./components/StatisticsUpload";
 import { GlobalStatistics } from "./components/GlobalStatistics";
+import { pageFromHash, showLatestUploadsLink } from "./navigation";
 import { BulkAnalysis } from "./components/BulkAnalysis";
 import { EffectsAndRerolls } from "./components/EffectsAndRerolls";
 import { SpellImpact, SwingEvents, UnitFate } from "./components/InsightPanels";
@@ -53,9 +54,9 @@ export function App() {
 }
 
 function AuthenticatedPages({ session }) {
-  const [page, setPage] = useState(() => window.location.hash === "#/statistics" ? "statistics" : "parser");
+  const [page, setPage] = useState(() => pageFromHash(window.location.hash));
   useEffect(() => {
-    const navigate = () => setPage(window.location.hash === "#/statistics" ? "statistics" : "parser");
+    const navigate = () => setPage(pageFromHash(window.location.hash));
     window.addEventListener("hashchange", navigate);
     return () => window.removeEventListener("hashchange", navigate);
   }, []);
@@ -63,9 +64,11 @@ function AuthenticatedPages({ session }) {
     <nav className="app-navigation" aria-label="Main navigation">
       <a href="#/parser" aria-current={page === "parser" ? "page" : undefined}>Replay parser</a>
       <a href="#/statistics" aria-current={page === "statistics" ? "page" : undefined}>Global statistics</a>
+      <a href="#/statistics/onlyOpponents" aria-current={page === "onlyOpponents" ? "page" : undefined}>Opponents only</a>
+      {showLatestUploadsLink(session.user.email) && <a href="#/statistics/latestUploads" aria-current={page === "latestUploads" ? "page" : undefined}>Latest 30 uploads</a>}
     </nav>
     <div hidden={page !== "parser"}><ReplayParser session={session} /></div>
-    {page === "statistics" && <GlobalStatistics />}
+    {page !== "parser" && <GlobalStatistics key={page} scope={page === "latestUploads" ? "latestUploads" : page === "onlyOpponents" ? "onlyOpponents" : "all"} />}
   </>;
 }
 

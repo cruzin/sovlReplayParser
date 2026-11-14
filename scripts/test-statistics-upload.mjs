@@ -111,6 +111,27 @@ try {
   assert.equal((await uploadStatistics([analysis], { ...options, storage })).inserted, 1);
   const brokenStorage = { getItem: () => { throw new Error("Blocked"); }, setItem: () => { throw new Error("Full"); } };
   assert.equal((await uploadStatistics([analysis], { ...options, storage: brokenStorage })).inserted, 1);
+  saved.clear();
+  const namedGame = (opponent, index) => ({
+    ...analysis,
+    players: analysis.players.map((player, slot) => ({ ...player, name: slot === 0 ? "Cruz" : opponent })),
+    recordedData: { ...analysis.recordedData, recordedUtc: new Date(Date.parse(analysis.recordedData.recordedUtc) + index * 1000).toISOString() },
+  });
+  const firstGame = namedGame("First opponent", 1);
+  const secondGame = namedGame("Second opponent", 2);
+  calls.length = 0;
+  await uploadStatistics([firstGame], { ...options, storage, bulk: false });
+  assert.equal(calls[0].body.uploader, null);
+  const firstIdentifier = calls[0].body.identifier;
+  calls.length = 0;
+  await uploadStatistics([firstGame, secondGame], { ...options, storage });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].body.length, 1, "Cached games contribute to inference without being re-sent");
+  assert.equal(calls[0].body[0].uploader, "Cruz");
+  calls.length = 0;
+  await uploadStatistics([firstGame, secondGame], options);
+  assert.equal(calls[0].body[0].identifier, firstIdentifier, "Inference does not change the match fingerprint");
+  assert.ok(calls[0].body.every((game) => game.uploader === "Cruz"));
   console.log("Statistics upload checks passed (mock requests only).");
 } finally {
   await server.close();

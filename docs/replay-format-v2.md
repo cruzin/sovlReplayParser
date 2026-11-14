@@ -1,5 +1,23 @@
 # Replay format v2 findings
 
+## November 2026 upload compatibility
+
+The supplied November 12 replay (game `1.34.0-ci.97`, balance `1.34.0-b1`)
+still uses format 2 and successfully produces the current upload payload.
+Its faction code 14 is mapped to Undying Dynasties, supported by the supplied
+army containing Risen King, Hierophant, Dynasty infantry, and Tomb Vultures.
+No other unknown faction codes are assigned guessed names.
+
+Standalone entries in the army's `characters` section can have `hasCharacter`
+false (for example, Abyssal Prince). They are marked separately for statistics
+uploads so they count alongside attached commanders, without changing combat
+character attribution. A recorded draw (`winnerPlayerID: -1`) remains a draw
+even when final scores differ.
+
+Use `node scripts/check-replay-upload.mjs <path>` for a local payload dry run;
+it sends nothing to the backend. Existing stored matches are not rewritten by
+these fixes, and their identifiers remain unchanged.
+
 Inspected all five supplied October 5, 2026 replays (formatVersion 2,
 game versions 1.33.0-ci.48 and 1.33.1-ci.51).
 

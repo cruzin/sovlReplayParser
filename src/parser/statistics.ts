@@ -12,8 +12,8 @@ export async function createStatisticsPayload(analysis) {
     name: player.name.normalize("NFC").trim(),
     score: scores[player.id],
     faction: player.faction.id,
-    commanders: units.filter((unit) => unit.playerId === player.id && unit.commander)
-      .map((unit) => unit.commander.sourceId).sort(),
+    commanders: units.filter((unit) => unit.playerId === player.id && (unit.commander || unit.isStandaloneCommander))
+      .map((unit) => unit.commander?.sourceId ?? unit.sourceId).sort(),
     result: outcome.winnerPlayerID === -1 ? "draw" : outcome.winnerPlayerID === player.id ? "win" : "loss",
   })).sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : a.score - b.score);
 
@@ -28,6 +28,7 @@ export async function createStatisticsPayload(analysis) {
   const identifier = `sovl-match-v1:${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("")}`;
   return {
     identifier,
+    uploader: null as string | null,
     recordedUtc: new Date(timestamp).toISOString(),
     players: sides.map(({ name, faction, commanders, result }) => ({ name, faction, commanders, result })),
     winner: outcome.winnerPlayerID === -1 ? null : players.find((player) => player.id === outcome.winnerPlayerID).name.normalize("NFC").trim(),
