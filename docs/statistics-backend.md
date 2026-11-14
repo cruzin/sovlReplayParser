@@ -131,6 +131,13 @@ not an unbiased census of SOVL players.
 
 ## Verification commands
 
+Apply `supabase/migrations/20261114040000_win_only_score_averages.sql` after the
+statistics RPCs exist to make **Avg win score diff** include wins only. The script
+updates faction, matchup, and commander averages in all three deployed RPCs,
+preserving other fields and grants. `average_score_difference` remains the API
+field name; null means no wins, displayed as —. Deploy the null-safe frontend
+before applying the SQL to avoid errors on rows without wins.
+
 ```text
 npm run typecheck
 npm run build

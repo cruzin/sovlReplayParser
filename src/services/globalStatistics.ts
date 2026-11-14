@@ -6,7 +6,7 @@ export type StatisticsRow = {
   wins: number;
   losses: number;
   draws: number;
-  average_score_difference: number;
+  average_score_difference: number | null;
 };
 
 export type PlayerAppearance = { player_name: string; games: number };

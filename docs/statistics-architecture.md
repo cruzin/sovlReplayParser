@@ -233,7 +233,12 @@ For opponent-only results:
   **Uploader faction**; its result does not contribute a second army appearance.
 
 For every statistics scope, win rate is wins/army appearances; draws count as
-non-wins. Commander type results count each type once per army/match, regardless
+non-wins. After the win-only score-average migration, **Avg win score diff** is
+`avg(p.margin) filter (where p.result = 'win')` for factions, matchups, and
+commanders. The JSON field remains `average_score_difference` for compatibility.
+No wins returns null and is displayed as —; never substitute zero. Opponent-only
+averages use the retained opponent's wins, not the uploader's. Commander type
+results count each type once per army/match, regardless
 of copies, and mean results of armies containing that type, not causal commander
 performance. Mirror games contribute two appearances on both-side pages and one
 on the opponent-only page.
